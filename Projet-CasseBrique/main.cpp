@@ -10,7 +10,7 @@ int main(int argc, char** argv)
     //A la position 0, 0
     oCircle.setPosition(0.f, 0.f);
     //Et de couleur verte
-    oCircle.setFillColor(sf::Color::Green);
+    oCircle.setFillColor(sf::Color(0xffffff));
 
 
     //Création d'un rectangle de taille 50, 50
@@ -18,7 +18,7 @@ int main(int argc, char** argv)
     //A la position 100, 100
     oCircle.setPosition(100.f, 100.f);
     //Et de couleur rouge
-    oRectangle.setFillColor(sf::Color::Red);
+    oRectangle.setFillColor(sf::Color(0xffffff));
 
     //GameLoop
     while (oWindow.isOpen())
