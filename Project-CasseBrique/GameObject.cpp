@@ -2,15 +2,30 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-GameObject::GameObject(int x, int y, int w, int h) {
+GameObject::GameObject() : GameObject(0, 0, 500) {}
+
+GameObject::GameObject(int x, int y, float d)
+{
+	this->x = x;
+	this->y = y;
+	this->w = d;
+	this->h = d;
 }
 
-void GameObject::createRect(int w, int h) {
+GameObject::GameObject(int x, int y, int w, int h)
+{
+	this->x = x;
+	this->y = y;
+	this->w = w;
+	this->h = h;
+}
+
+void GameObject::createRect() {
 
 }
 
-void GameObject::createCircle(float d) {
-	CircleShape shape(d);
+void GameObject::createCircle() {
+	CircleShape shape(this->w, this->h);
 	shape.setFillColor(Color::Yellow);
 }
 

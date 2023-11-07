@@ -3,22 +3,30 @@
 #include "GameObject.h"
 using namespace sf;
 
-int main()
+Main::Main()
 {
-    Main();
-
-    return 0;
+    this->start();
 }
 
-Main::Main()
+void Main::start()
 {
     this->window.setParams(500, 500);
 
-    GameObject gameObject(1, 2, 25, 5);
-    gameObject.createCircle(300);
+    GameObject gameObject(1, 2, 300);
+    gameObject.createCircle();
 
     while (this->window.isOpen())
     {
         this->window.drawGameObject(gameObject);
+        this->window.draw();
     }
+}
+
+int main()
+{
+    cout << "starting..";
+    Main myMain;
+    cout << "closing..";
+
+    return 0;
 }

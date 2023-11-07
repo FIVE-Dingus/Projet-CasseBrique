@@ -20,7 +20,11 @@ void MyWindow::setParams(int x, int y, bool lockedSize)
 	this->sizeY = y;
 	this->lockedSize = lockedSize;
 
-	this->renderWindow.setSize(Vector2u(this->sizeX, this->sizeY));
+	if (this->isOpen())
+	{
+		this->renderWindow.close();
+	}
+	this->renderWindow.create(VideoMode(this->sizeX, this->sizeY, 200), "SFML works!");
 
 	this->renderWindow.pollEvent(this->event);
 }
@@ -38,7 +42,7 @@ void MyWindow::drawGameObject(GameObject gameObject)
 {
 	int size = gameObjects.size();
 	gameObjects.resize(size + 1);
-	gameObjects[size + 1] = gameObject;
+	gameObjects[size] = gameObject;
 }
 
 void MyWindow::draw()
@@ -59,8 +63,10 @@ void MyWindow::draw()
 	int size = gameObjects.size();
 	for (int i = 0; i < size; i++)
 	{
-		gameObjects[i].getTexture();
+		renderWindow.draw(gameObjects[i].getTexture());
 	}
 
 	renderWindow.display();
+
+	gameObjects.resize(0);
 }

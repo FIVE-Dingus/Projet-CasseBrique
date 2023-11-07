@@ -8,4 +8,7 @@ private:
 
 public:
 	Main();
+
+private:
+	void start();
 };

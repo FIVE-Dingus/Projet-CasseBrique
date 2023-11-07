@@ -9,14 +9,15 @@ private:
 	int y;
 	int h;
 	int w;
-	float d;
 	CircleShape shape;
 
 public:
+	GameObject();
+	GameObject(int x, int y, float d);
 	GameObject(int x, int y, int w, int h);
 
-	void createRect(int w, int h);
-	void createCircle(float d);
+	void createRect();
+	void createCircle();
 	CircleShape getTexture();
 
 };
