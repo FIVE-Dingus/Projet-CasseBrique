@@ -13,10 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameObject">
+      <UniqueIdentifier>{be66197e-9bbf-4de6-8108-216175972bdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameObject">
+      <UniqueIdentifier>{047ea51c-4564-419a-9ee2-87370b58922e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Fichiers sources\GameObject</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameObject.h">
+      <Filter>Fichiers d%27en-tête\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
