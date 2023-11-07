@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "main.h"
+#include "GameObject.h"
 using namespace sf;
 
 int main()
@@ -11,9 +12,8 @@ int main()
 
 Main::Main()
 {
-    RenderWindow window(VideoMode(200, 200), "SFML works!");
-    CircleShape shape(100.f);
-    shape.setFillColor(Color::Green);
+    RenderWindow window(VideoMode(500, 500), "SFML works!");
+    GameObject* gameObject = new GameObject(1, 2, 25, 5);
 
     while (window.isOpen())
     {
@@ -24,7 +24,7 @@ Main::Main()
                 window.close();
         }
 
-        window.setSize(Vector2u(200, 200));
+        window.setSize(Vector2u(500, 500));
         window.clear();
         window.draw(shape);
         window.display();
