@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
+using namespace sf;
 
 class GameObject {
 private:
@@ -8,12 +10,13 @@ private:
 	int h;
 	int w;
 	float d;
-	bool shape;
+	CircleShape shape;
 
 public:
 	GameObject(int x, int y, int w, int h);
 
 	void createRect(int w, int h);
 	void createCircle(float d);
+	CircleShape getTexture();
 
 };

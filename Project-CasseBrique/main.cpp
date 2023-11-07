@@ -12,21 +12,9 @@ int main()
 
 Main::Main()
 {
-    RenderWindow window(VideoMode(500, 500), "SFML works!");
+
     GameObject* gameObject = new GameObject(1, 2, 25, 5);
+    gameObject->createCircle(300);
 
-    while (window.isOpen())
-    {
-        Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == Event::Closed)
-                window.close();
-        }
-
-        window.setSize(Vector2u(500, 500));
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+    
 }
