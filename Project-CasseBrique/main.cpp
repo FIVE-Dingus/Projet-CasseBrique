@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "main.h"
-#include "GameObject.h"
+#include "gameObject.h"
+#include "window.h"
 using namespace sf;
 
 int main()
@@ -12,9 +13,13 @@ int main()
 
 Main::Main()
 {
+    this->window.setParams(500, 500);
 
-    GameObject* gameObject = new GameObject(1, 2, 25, 5);
-    gameObject->createCircle(300);
+    GameObject gameObject(1, 2, 25, 5);
+    gameObject.createCircle(300);
 
-    
+    while (this->window.isOpen())
+    {
+        this->window.drawGameObject(gameObject);
+    }
 }
