@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "main.h"
 #include "GameObject.h"
+#include "vect.h"
 using namespace sf;
 
 Main::Main()
@@ -10,9 +11,7 @@ Main::Main()
 
 void Main::start()
 {
-    this->window.setParams(500, 500);
-
-    GameObject gameObject(1, 2, 300);
+    GameObject gameObject(Vect2(0, 0), 300);
     gameObject.createCircle();
 
     while (this->window.isOpen())

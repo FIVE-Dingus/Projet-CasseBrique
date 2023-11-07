@@ -1,20 +1,19 @@
 #pragma once
 
+#include "vect.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
 class GameObject {
 private:
-	int x;
-	int y;
-	int h;
-	int w;
+	Vect2 pos;
+	Vect2 size;
 	CircleShape shape;
 
 public:
 	GameObject();
-	GameObject(int x, int y, float d);
-	GameObject(int x, int y, int w, int h);
+	GameObject(Vect2 pos, int d);
+	GameObject(Vect2 pos, Vect2 size);
 
 	void createRect();
 	void createCircle();

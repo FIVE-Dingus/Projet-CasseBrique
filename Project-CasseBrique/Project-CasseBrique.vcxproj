@@ -137,10 +137,12 @@
   <ItemGroup>
     <ClCompile Include="gameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="vect.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
+    <ClInclude Include="vect.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>

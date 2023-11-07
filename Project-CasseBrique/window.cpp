@@ -1,12 +1,13 @@
 #include "window.h"
+#include "vect.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-MyWindow::MyWindow() : MyWindow(0, 0, true) {};
+MyWindow::MyWindow() : MyWindow(Vect2(500, 500), true) {}
 
-MyWindow::MyWindow(int x, int y, bool lockedSize)
+MyWindow::MyWindow(Vect2 size, bool lockedSize)
 {
-	this->setParams(x, y, lockedSize);
+	this->setParams(size, lockedSize);
 }
 
 bool MyWindow::isOpen()
@@ -14,17 +15,16 @@ bool MyWindow::isOpen()
 	return this->renderWindow.isOpen();
 }
 
-void MyWindow::setParams(int x, int y, bool lockedSize)
+void MyWindow::setParams(Vect2 size, bool lockedSize)
 {
-	this->sizeX = x;
-	this->sizeY = y;
+	this->size = size;
 	this->lockedSize = lockedSize;
 
 	if (this->isOpen())
 	{
 		this->renderWindow.close();
 	}
-	this->renderWindow.create(VideoMode(this->sizeX, this->sizeY, 200), "SFML works!");
+	this->renderWindow.create(this->size.getVideoMode(), "SFML works!");
 
 	this->renderWindow.pollEvent(this->event);
 }
@@ -55,7 +55,7 @@ void MyWindow::draw()
 
 	if (lockedSize)
 	{
-		renderWindow.setSize(Vector2u(sizeX, sizeY));
+		renderWindow.setSize(this->size.getVector2u());
 	}
 
 	renderWindow.clear();

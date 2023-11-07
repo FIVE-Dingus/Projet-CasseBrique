@@ -2,22 +2,14 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-GameObject::GameObject() : GameObject(0, 0, 500) {}
+GameObject::GameObject() : GameObject(Vect2(0), 500) {}
 
-GameObject::GameObject(int x, int y, float d)
-{
-	this->x = x;
-	this->y = y;
-	this->w = d;
-	this->h = d;
-}
+GameObject::GameObject(Vect2 pos, int d) : GameObject(pos, Vect2(d, d)) {}
 
-GameObject::GameObject(int x, int y, int w, int h)
+GameObject::GameObject(Vect2 pos, Vect2 size)
 {
-	this->x = x;
-	this->y = y;
-	this->w = w;
-	this->h = h;
+	this->pos = pos;
+	this->size = size;
 }
 
 void GameObject::createRect() {
@@ -25,7 +17,7 @@ void GameObject::createRect() {
 }
 
 void GameObject::createCircle() {
-	CircleShape shape(this->w, this->h);
+	this->shape = CircleShape(this->size.x(), this->size.y());
 	shape.setFillColor(Color::Yellow);
 }
 
