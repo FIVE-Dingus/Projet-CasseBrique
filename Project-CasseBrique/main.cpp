@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "main.h"
-#include "gameObject.h"
-#include "window.h"
+#include "GameObject.h"
 using namespace sf;
 
 int main()

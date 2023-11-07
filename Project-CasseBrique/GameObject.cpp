@@ -1,4 +1,4 @@
-#include "GameObject.h"
+#include "gameObject.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
