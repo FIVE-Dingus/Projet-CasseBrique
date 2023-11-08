@@ -39,6 +39,9 @@
     <ClCompile Include="vect.cpp">
       <Filter>Fichiers sources\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="colors.cpp">
+      <Filter>Fichiers sources\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="vect.h">
       <Filter>Fichiers d%27en-tête\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="colors.h">
+      <Filter>Fichiers d%27en-tête\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
