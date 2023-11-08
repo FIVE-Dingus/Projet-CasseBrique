@@ -73,3 +73,11 @@ Shape* GameObject::getTexture()
 {
 	return shape;
 }
+
+void GameObject::rotateShape(Vect2 direction) {
+	this->shape->rotate(direction.getAngle());
+}
+
+void GameObject::refresh() {
+
+}

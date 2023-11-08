@@ -9,6 +9,7 @@ class GameObject {
 private:
 	Vect2 pos;
 	Vect2 size;
+	Vect2 direction;
 
 	MyColor color;
 
@@ -30,6 +31,8 @@ public:
 	void createRect();
 	void createCircle();
 	Shape* getTexture();
+	void rotateShape(Vect2 direction);
+	void refresh();
 
 private:
 	void createShape();

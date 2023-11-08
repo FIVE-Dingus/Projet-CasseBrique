@@ -21,6 +21,7 @@ public:
 	int norme();
 	Vect2 normal();
 	void normalize();
+	float getAngle();
 
 	Vector2u getVector2u();
 	Vector2f getVector2f();

@@ -56,6 +56,12 @@ void Vect2::normalize()
 	makeAbsolute();
 }
 
+float Vect2::getAngle() {
+
+	float angle = acos(_x / norme());
+	return angle;
+}
+
 Vector2u Vect2::getVector2u()
 {
 	return Vector2u(_x, _y);
