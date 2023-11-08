@@ -64,7 +64,7 @@ void MyWindow::draw()
 	int size = gameObjects.size();
 	for (int i = 0; i < size; i++)
 	{
-		renderWindow.draw(gameObjects[i].getTexture());
+		renderWindow.draw(*gameObjects[i].getTexture());
 	}
 
 	renderWindow.display();
