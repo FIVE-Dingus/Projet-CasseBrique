@@ -6,7 +6,7 @@ GameObject::GameObject() : GameObject(Vect2(0), 500) {}
 
 GameObject::GameObject(MyColor col) : GameObject(Vect2(0), 500, col) {}
 
-GameObject::GameObject(Vect2 pos, int d) : GameObject(pos, Vect2(d, d)) {}
+GameObject::GameObject(Vect2 pos, int d) : GameObject(pos, Vect2(d /2, d /2)) {}
 
 GameObject::GameObject(Vect2 pos, int d, MyColor col) : GameObject(pos, Vect2(d, d), col) {}
 
@@ -58,7 +58,7 @@ void GameObject::createCircle()
 
 void GameObject::createShape()
 {
-	//this->shape.setPosition(this->pos.x(), this->pos.y());
+	this->shape.setPosition(this->pos.x(), this->pos.y());
 	//this->shape.setScale(this->size.x(), this->size.y());
 	this->shape.setFillColor(this->color.getSfColor());
 }
