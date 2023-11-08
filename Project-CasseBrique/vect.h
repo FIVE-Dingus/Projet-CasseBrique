@@ -23,6 +23,7 @@ public:
 	void normalize();
 
 	Vector2u getVector2u();
+	Vector2f getVector2f();
 	VideoMode getVideoMode();
 
 	Vect2 operator*(int val);

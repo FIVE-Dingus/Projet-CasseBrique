@@ -61,6 +61,11 @@ Vector2u Vect2::getVector2u()
 	return Vector2u(_x, _y);
 }
 
+Vector2u Vect2::getVector2f()
+{
+	return Vector2f(_x, _y);
+}
+
 VideoMode Vect2::getVideoMode()
 {
 	return VideoMode(_x, _y);

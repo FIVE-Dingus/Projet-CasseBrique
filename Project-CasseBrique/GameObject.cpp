@@ -51,7 +51,8 @@ void GameObject::setColor(MyColor color)
 
 void GameObject::createRect()
 {
-
+	this->shape[0] = RectangleShape(this->size.getVector2f());
+	this->createShape();
 }
 
 void GameObject::createCircle()
