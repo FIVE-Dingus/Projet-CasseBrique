@@ -56,7 +56,7 @@ void GameObject::createRect()
 
 void GameObject::createCircle()
 {
-	this->shape = CircleShape(this->size.x(), this->size.y());
+	this->shape[0] = CircleShape(this->size.x(), this->size.y());
 	this->createShape();
 }
 
