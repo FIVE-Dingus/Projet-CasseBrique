@@ -1,6 +1,8 @@
 #include "gameObject.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 using namespace sf;
+using namespace std;
 
 GameObject::GameObject() : GameObject(Vect2(0), 500) {}
 
@@ -30,13 +32,15 @@ void GameObject::setPosition(Vect2 pos)
 void GameObject::setSize(int d)
 {
 	this->size = Vect2(d /2, d /2);
-	this->shape.setScale(this->size.x(), this->size.y());
+	this->shape.setRadius(this->size.x());
+	this->shape.setPointCount(this->size.y());
 }
 
 void GameObject::setSize(Vect2 size)
 {
 	this->size = size;
-	this->shape.setScale(this->size.x(), this->size.y());
+	this->shape.setRadius(this->size.x());
+	this->shape.setPointCount(this->size.y());
 }
 
 void GameObject::setColor(MyColor color)
@@ -59,7 +63,8 @@ void GameObject::createCircle()
 void GameObject::createShape()
 {
 	this->shape.setPosition(this->pos.x(), this->pos.y());
-	this->shape.setScale(this->size.x(), this->size.y());
+	this->shape.setRadius(this->size.x());
+	this->shape.setPointCount(this->size.y());
 	this->shape.setFillColor(this->color.getSfColor());
 }
 
