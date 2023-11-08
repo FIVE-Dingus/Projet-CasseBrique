@@ -8,6 +8,7 @@ class GameObject {
 private:
 	Vect2 pos;
 	Vect2 size;
+
 	CircleShape shape;
 
 public:

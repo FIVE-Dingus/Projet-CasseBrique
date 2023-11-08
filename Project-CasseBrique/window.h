@@ -12,7 +12,10 @@ private:
 	Vect2 size;
 	bool lockedSize;
 	Event event;
+
 	RenderWindow renderWindow;
+	ContextSettings settings;
+
 	vector<GameObject> gameObjects;
 
 public:

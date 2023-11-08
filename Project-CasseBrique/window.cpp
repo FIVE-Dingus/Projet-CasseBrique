@@ -24,7 +24,8 @@ void MyWindow::setParams(Vect2 size, bool lockedSize)
 	{
 		this->renderWindow.close();
 	}
-	this->renderWindow.create(this->size.getVideoMode(), "SFML works!");
+	settings.antialiasingLevel = 16;
+	this->renderWindow.create(this->size.getVideoMode(), "SFML works!", Style::Default, settings);
 
 	this->renderWindow.pollEvent(this->event);
 }
