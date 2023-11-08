@@ -12,7 +12,7 @@ private:
 
 	MyColor color;
 
-	CircleShape shape;
+	Shape* shape;
 
 public:
 	GameObject();
@@ -29,7 +29,7 @@ public:
 
 	void createRect();
 	void createCircle();
-	CircleShape getTexture();
+	Shape* getTexture();
 
 private:
 	void createShape();

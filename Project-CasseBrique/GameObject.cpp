@@ -26,27 +26,27 @@ GameObject::GameObject(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, siz
 void GameObject::setPosition(Vect2 pos)
 {
 	this->pos = pos;
-	this->shape.setPosition(this->pos.x(), this->pos.y());
+	this->shape->setPosition(this->pos.x(), this->pos.y());
 }
 
 void GameObject::setSize(int d)
 {
 	this->size = Vect2(d /2, d /2);
-	this->shape.setRadius(this->size.x());
-	this->shape.setPointCount(this->size.y());
+	this->shape->setRadius(this->size.x());
+	this->shape->setPointCount(this->size.y());
 }
 
 void GameObject::setSize(Vect2 size)
 {
 	this->size = size;
-	this->shape.setRadius(this->size.x());
-	this->shape.setPointCount(this->size.y());
+	this->shape->setRadius(this->size.x());
+	this->shape->setPointCount(this->size.y());
 }
 
 void GameObject::setColor(MyColor color)
 {
 	this->color = color;
-	this->shape.setFillColor(color.getSfColor());
+	this->shape->setFillColor(color.getSfColor());
 }
 
 void GameObject::createRect()
@@ -62,13 +62,13 @@ void GameObject::createCircle()
 
 void GameObject::createShape()
 {
-	this->shape.setPosition(this->pos.x(), this->pos.y());
-	this->shape.setRadius(this->size.x());
-	this->shape.setPointCount(this->size.y());
-	this->shape.setFillColor(this->color.getSfColor());
+	this->shape->setPosition(this->pos.x(), this->pos.y());
+	this->shape->setRadius(this->size.x());
+	this->shape->setPointCount(this->size.y());
+	this->shape->setFillColor(this->color.getSfColor());
 }
 
-CircleShape GameObject::getTexture()
+Shape* GameObject::getTexture()
 {
 	return shape;
 }
