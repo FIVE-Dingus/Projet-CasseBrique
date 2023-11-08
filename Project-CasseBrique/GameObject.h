@@ -8,6 +8,7 @@ using namespace sf;
 class GameObject {
 private:
 	Vect2 pos;
+	Vect2 defaultSize;
 	Vect2 size;
 
 	MyColor color;
