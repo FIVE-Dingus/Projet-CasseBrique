@@ -59,7 +59,7 @@ void GameObject::createCircle()
 void GameObject::createShape()
 {
 	this->shape.setPosition(this->pos.x(), this->pos.y());
-	//this->shape.setScale(this->size.x(), this->size.y());
+	this->shape.setScale(this->size.x(), this->size.y());
 	this->shape.setFillColor(this->color.getSfColor());
 }
 
