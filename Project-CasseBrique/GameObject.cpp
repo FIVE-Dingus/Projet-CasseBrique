@@ -51,20 +51,19 @@ void GameObject::setColor(MyColor color)
 
 void GameObject::createRect()
 {
-	this->shape[0] = RectangleShape(this->defaultSize.getVector2f());
+	this->shape = new RectangleShape(this->size.getVector2f());
 	this->createShape();
 }
 
 void GameObject::createCircle()
 {
-	this->shape = new CircleShape(this->defaultSize.x(), this->defaultSize.y());
+	this->shape = new CircleShape(this->size.x());
 	this->createShape();
 }
 
 void GameObject::createShape()
 {
 	this->shape->setPosition(this->pos.x(), this->pos.y());
-	this->shape->setScale(this->size.x() / this->defaultSize.x(), this->size.y() / this->defaultSize.y());
 	this->shape->setFillColor(this->color.getSfColor());
 }
 
