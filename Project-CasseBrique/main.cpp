@@ -11,12 +11,15 @@ Main::Main()
 
 void Main::start()
 {
-    GameObject gameObject(Vect2(0, 0), 500);
+    GameObject gameObject(Vect2(0, 0), 100);
     gameObject.createCircle();
+    GameObject gameObject2(Vect2(100, 100), 100);
+    gameObject2.createCircle();
 
     while (this->window.isOpen())
     {
         this->window.drawGameObject(gameObject);
+        this->window.drawGameObject(gameObject2);
         this->window.draw();
     }
 }

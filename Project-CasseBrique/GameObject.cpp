@@ -12,15 +12,19 @@ GameObject::GameObject(Vect2 pos, Vect2 size)
 	this->size = size;
 }
 
-void GameObject::createRect() {
+void GameObject::createRect()
+{
 
 }
 
-void GameObject::createCircle() {
+void GameObject::createCircle()
+{
 	this->shape = CircleShape(this->size.x() /2, this->size.y() /2);
+	shape.setPosition(this->pos.x(), this->pos.y());
 	shape.setFillColor(Color::Yellow);
 }
 
-CircleShape GameObject::getTexture() {
+CircleShape GameObject::getTexture()
+{
 	return shape;
 }
