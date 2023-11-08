@@ -12,8 +12,9 @@ Main::Main()
 void Main::start()
 {
     GameObject gameObject(Vect2(0, 0), 100);
+    gameObject.setColor(MyColor(0x0000ff));
     gameObject.createCircle();
-    GameObject gameObject2(Vect2(100, 100), 100, MyColor(0xffffff));
+    GameObject gameObject2(Vect2(100, 100), 100, MyColor(0xff0000));
     gameObject2.createCircle();
 
     while (this->window.isOpen())

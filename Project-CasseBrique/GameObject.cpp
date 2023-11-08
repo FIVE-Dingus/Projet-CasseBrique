@@ -8,7 +8,7 @@ GameObject::GameObject(MyColor col) : GameObject(Vect2(0), 500, col) {}
 
 GameObject::GameObject(Vect2 pos, int d) : GameObject(pos, Vect2(d /2, d /2)) {}
 
-GameObject::GameObject(Vect2 pos, int d, MyColor col) : GameObject(pos, Vect2(d, d), col) {}
+GameObject::GameObject(Vect2 pos, int d, MyColor col) : GameObject(pos, Vect2(d /2, d /2), col) {}
 
 GameObject::GameObject(Vect2 pos, Vect2 size)
 {
@@ -29,7 +29,7 @@ void GameObject::setPosition(Vect2 pos)
 
 void GameObject::setSize(int d)
 {
-	this->size = Vect2(d, d);
+	this->size = Vect2(d /2, d /2);
 	this->shape.setScale(this->size.x(), this->size.y());
 }
 
