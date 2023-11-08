@@ -17,7 +17,7 @@ void GameObject::createRect() {
 }
 
 void GameObject::createCircle() {
-	this->shape = CircleShape(this->size.x(), this->size.y());
+	this->shape = CircleShape(this->size.x() /2, this->size.y() /2);
 	shape.setFillColor(Color::Yellow);
 }
 

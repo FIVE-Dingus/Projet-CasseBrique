@@ -11,7 +11,7 @@ Main::Main()
 
 void Main::start()
 {
-    GameObject gameObject(Vect2(0, 0), 300);
+    GameObject gameObject(Vect2(0, 0), 500);
     gameObject.createCircle();
 
     while (this->window.isOpen())
