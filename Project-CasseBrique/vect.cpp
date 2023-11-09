@@ -62,7 +62,6 @@ float Vect2::getAngle() {
 
 	float angle = atan2( _y , _x );
 	float angleDegrees = angle * 180 / 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679;
-	cout << angleDegrees << endl;
 	return angleDegrees;
 }
 
