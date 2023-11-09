@@ -27,7 +27,7 @@ void Main::updateGameObject()
     int size = this->allGameObjects.size();
     for (int i = 0; i < size; i++)
     {
-        this->allGameObjects[i].update(deltaTime * this->worldSpeed, deltaTime);
+        this->allGameObjects[i].update(deltaTime * this->worldSpeed, deltaTime, this->window.getSfWindow());
     }
 }
 

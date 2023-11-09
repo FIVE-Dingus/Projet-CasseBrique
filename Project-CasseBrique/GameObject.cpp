@@ -180,11 +180,11 @@ void GameObject::rotateShape(Vect2 direction) {
 	this->rect.rotate(direction.getAngle());
 }
 
-void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange)
+void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange, RenderWindow* window)
 {
 	this->deltaTime = deltaTime;
 	this->deltaTimeWithoutTimeChange = deltaTimeWithoutTimeChange;
-	Vector2i position = Mouse::getPosition();
+	Vector2i position = Mouse::getPosition(*window);
 	Vect2 mousePos = { position.x * 1.f , position.y * 1.f };
 	Vect2 direction = (mousePos - this->pos);
 	rotateShape(direction);
