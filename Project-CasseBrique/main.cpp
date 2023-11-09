@@ -7,8 +7,8 @@ using namespace sf;
 void Main::initGameObjects()
 {
     this->newGameObjects(GameObject(Vect2(100, 100), 100, MyColor(0x00ff00)));
-    this->newGameObjects(GameObject(Vect2(100, 100), Vect2(100, 100), MyColor(0x000000, 127)));
-    this->allGameObjects[1].setOrigin({ 2, 2 });
+    this->newGameObjects(GameObject(Vect2(100, 100), Vect2(60, 20), MyColor(0x000000, 100)));
+    this->allGameObjects[1].setOrigin({ 0, 1 });
 }
 
 void Main::start()

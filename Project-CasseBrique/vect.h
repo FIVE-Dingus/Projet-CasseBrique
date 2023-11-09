@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 using namespace sf;
+#include <iostream>
+using namespace std;
 
 class Vect2
 {
