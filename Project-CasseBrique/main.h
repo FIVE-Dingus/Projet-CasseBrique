@@ -18,6 +18,5 @@ private:
 	void initGameObjects();
 	void newGameObjects(GameObject obj);
 	void updateGameObject();
-	void updateGraphicGameObject();
 	void start();
 };

@@ -7,14 +7,15 @@ using namespace sf;
 void Main::initGameObjects()
 {
     this->newGameObjects(GameObject(Vect2(100, 100), 100, MyColor(0x00ff00)));
-    this->newGameObjects(GameObject(Vect2(50, 50), Vect2(100, 100), MyColor(0x000000, 127)));
-    this->newGameObjects(GameObject(Vect2(150, 150), Vect2(100, 100), MyColor(0x000000, 127)));
+    this->newGameObjects(GameObject(Vect2(100, 100), Vect2(100, 100), MyColor(0x000000, 127)));
+    this->allGameObjects[1].setOrigin({ 2, 2 });
 }
 
 void Main::start()
 {
     while (this->window.isOpen())
     {
+        this->updateGameObject();
         this->window.drawGameObjects(this->allGameObjects);
         this->window.draw();
     }
@@ -22,7 +23,7 @@ void Main::start()
 
 void Main::updateGameObject()
 {
-    float deltaTime = this->clock.restart().asMilliseconds();
+    float deltaTime = this->clock.restart().asSeconds();
     int size = this->allGameObjects.size();
     for (int i = 0; i < size; i++)
     {

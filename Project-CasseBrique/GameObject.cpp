@@ -6,6 +6,8 @@ using namespace std;
 
 GameObject::GameObject()
 {
+	this->subdivisionOrigin = { 2, 2 };
+	this->posOrigin = { 1, 1 };
 	this->defaultSize = { 1, 1 };
 	this->setPosition(pos);
 	this->setSize(size);
@@ -19,6 +21,8 @@ GameObject::GameObject(MyColor col) : GameObject()
 
 GameObject::GameObject(Vect2 pos, int d)
 {
+	this->subdivisionOrigin = { 2, 2 };
+	this->posOrigin = { 1, 1 };
 	this->defaultSize = { 1, 1 };
 	this->setPosition(pos);
 	this->setSize(Vect2(d, d));
@@ -32,6 +36,8 @@ GameObject::GameObject(Vect2 pos, int d, MyColor col) : GameObject(pos, d)
 
 GameObject::GameObject(Vect2 pos, Vect2 size)
 {
+	this->subdivisionOrigin = { 2, 2 };
+	this->posOrigin = { 1, 1 };
 	this->defaultSize = { 1, 1 };
 	this->setPosition(pos);
 	this->setSize(size);
@@ -45,8 +51,8 @@ GameObject::GameObject(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, siz
 
 void GameObject::setPosition(Vect2 pos)
 {
-	this->circle.setOrigin((this->size / 2).getVector2f());
-	this->rect.setOrigin((this->defaultSize / 2).getVector2f());
+	this->circle.setOrigin({ this->size.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->size.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) });
+	this->rect.setOrigin({ this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) });
 
 	this->pos = pos;
 	this->circle.setPosition(this->pos.x(), this->pos.y());
@@ -55,8 +61,8 @@ void GameObject::setPosition(Vect2 pos)
 
 void GameObject::setSize(int d)
 {
-	this->circle.setOrigin((this->size / 2).getVector2f());
-	this->rect.setOrigin((this->defaultSize / 2).getVector2f());
+	this->circle.setOrigin({ this->size.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->size.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) });
+	this->rect.setOrigin({ this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) });
 
 	this->size = Vect2(d /2, d /2);
 	this->circle.setRadius(this->size.x() /2);
@@ -66,8 +72,8 @@ void GameObject::setSize(int d)
 
 void GameObject::setSize(Vect2 size)
 {
-	this->circle.setOrigin((this->size / 2).getVector2f());
-	this->rect.setOrigin((this->defaultSize / 2).getVector2f());
+	this->circle.setOrigin({ this->size.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->size.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) });
+	this->rect.setOrigin({ this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) });
 
 	this->size = size;
 	this->circle.setRadius(this->size.x() /2);
@@ -80,6 +86,37 @@ void GameObject::setColor(MyColor color)
 	this->color = color;
 	this->circle.setFillColor(color.getSfColor());
 	this->rect.setFillColor(color.getSfColor());
+}
+
+void GameObject::setOrigin(Vect2 Origin)
+{
+	Vect2 offset = { this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) };
+	this->pos -= offset;
+	this->posOrigin = Origin;
+	offset = { this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) };
+	this->pos += offset;
+	this->createShape();
+}
+
+void GameObject::setOrigin(Vect2 subdivision, Vect2 Origin)
+{
+	Vect2 offset = { this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) };
+	this->pos -= offset;
+	this->posOrigin = Origin;
+	this->subdivisionOrigin = subdivision;
+	offset = { this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) };
+	this->pos += offset;
+	this->createShape();
+}
+
+void GameObject::setSubdivisionOrigin(Vect2 subdivision)
+{
+	Vect2 offset = { this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) };
+	this->pos -= offset;
+	this->subdivisionOrigin = subdivision;
+	offset = { this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) };
+	this->pos += offset;
+	this->createShape();
 }
 
 void GameObject::createRect()
@@ -108,8 +145,8 @@ void GameObject::createEmpty()
 
 void GameObject::createShape()
 {
-	this->circle.setOrigin((this->size / 2).getVector2f());
-	this->rect.setOrigin((this->defaultSize / 2).getVector2f());
+	this->circle.setOrigin({this->size.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->size.y() * (this->posOrigin.y() / this->subdivisionOrigin.y())});
+	this->rect.setOrigin({this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y())});
 
 	this->circle.setPosition(this->pos.x(), this->pos.y());
 	this->circle.setRadius(this->size.x() /2);
@@ -146,4 +183,7 @@ void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange)
 {
 	this->deltaTime = deltaTime;
 	this->deltaTimeWithoutTimeChange = deltaTimeWithoutTimeChange;
+
+	this->circle.rotate(50.f * this->deltaTime);
+	this->rect.rotate(50.f * this->deltaTime);
 }

@@ -24,6 +24,9 @@ private:
 	bool isCircle;
 	bool isEmpty;
 
+	Vect2 subdivisionOrigin;
+	Vect2 posOrigin;
+
 public:
 	GameObject();
 	GameObject(MyColor col);
@@ -36,6 +39,10 @@ public:
 	void setSize(int d);
 	void setSize(Vect2 size);
 	void setColor(MyColor color);
+
+	void setOrigin(Vect2 Origin);
+	void setOrigin(Vect2 subdivision, Vect2 Origin);
+	void setSubdivisionOrigin(Vect2 subdivision);
 
 	void createRect();
 	void createCircle();
