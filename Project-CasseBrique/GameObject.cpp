@@ -176,8 +176,8 @@ Shape* GameObject::getTexture()
 }
 
 void GameObject::rotateShape(Vect2 direction) {
-	this->circle.rotate(direction.getAngle());
-	this->rect.rotate(direction.getAngle());
+	this->circle.setRotation(direction.getAngle());
+	this->rect.setRotation(direction.getAngle());
 }
 
 void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange)
