@@ -14,5 +14,6 @@ public:
 
 private:
 	void initGameObjects();
+	void newGameObjects(GameObject obj);
 	void start();
 };

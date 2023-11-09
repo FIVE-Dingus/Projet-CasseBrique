@@ -35,7 +35,7 @@ void MyWindow::drawGameObjects(vector<GameObject> gameObject)
 	int size = gameObject.size();
 	for (int i = 0; i < size; i++)
 	{
-		this->drawGameObject(gameObjects[i]);
+		this->drawGameObject(gameObject[i]);
 	}
 }
 
