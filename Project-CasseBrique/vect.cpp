@@ -27,7 +27,7 @@ Vect2::Vect2(float x, float y, bool abs)
 
 void Vect2::setIfOnlyInAbs(bool abs)
 {
-	abs = abs;
+	this->abs = abs;
 }
 
 float Vect2::x()
@@ -146,7 +146,7 @@ void Vect2::operator-=(Vect2 otherVect2)
 
 void Vect2::makeAbsolute()
 {
-	if (abs)
+	if (this->abs)
 	{
 		if (_x < 0)
 		{
