@@ -1,5 +1,7 @@
 #include "vect.h"
 #include <math.h>
+#include <cmath>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
@@ -58,8 +60,9 @@ void Vect2::normalize()
 
 float Vect2::getAngle() {
 
-	float angle = acos(_x / norme());
-	return angle;
+	float angle = std::atan2( _y , _x );
+	float angleDegrees = angle * 180 / 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679;
+	return angleDegrees;
 }
 
 Vector2u Vect2::getVector2u()
