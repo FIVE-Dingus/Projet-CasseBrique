@@ -71,3 +71,8 @@ void MyWindow::draw()
 
 	gameObjects.resize(0);
 }
+
+RenderWindow* MyWindow::getSfWindow()
+{
+	return &this->renderWindow;
+}

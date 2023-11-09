@@ -27,6 +27,8 @@ public:
 	void drawGameObject(GameObject gameObject);
 	void draw();
 
+	RenderWindow* getSfWindow();
+
 private:
 	void setParams(Vect2 size, bool lockedSize = true);
 };

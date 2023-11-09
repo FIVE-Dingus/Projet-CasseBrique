@@ -49,7 +49,7 @@ public:
 	void createEmpty();
 	Shape* getTexture();
 	void rotateShape(Vect2 direction);
-	void update(float deltaTime, float deltaTimeWithoutTimeChange);
+	void update(float deltaTime, float deltaTimeWithoutTimeChange, RenderWindow* window);
 
 private:
 	void createShape();
