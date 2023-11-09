@@ -6,9 +6,18 @@ using namespace sf;
 
 void Main::initGameObjects()
 {
-    this->newGameObjects(GameObject(Vect2(100, 100), 100, MyColor(0x00ff00)));
-    this->newGameObjects(GameObject(Vect2(100, 100), Vect2(60, 20), MyColor(0x000000, 100)));
-    this->allGameObjects[1].setOrigin({ 0, 1 });
+    MyColor col1 = {0xff0000};
+    MyColor col2 = {0x00ffff};
+    MyColor mixed;
+    float pct = 0.f;
+    for (int i = 0; i < 500; i++)
+    {
+        pct = i / 500.f;
+        cout << pct << endl;
+        col1.mixin(col2, &mixed, pct);
+        this->newGameObjects(GameObject(Vect2(0, 0), Vect2(500 - i, 500), mixed));
+        this->allGameObjects[i].setOrigin({0, 0});
+    }
 }
 
 void Main::start()

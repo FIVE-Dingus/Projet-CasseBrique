@@ -187,5 +187,5 @@ void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange, Rende
 	Vector2i position = Mouse::getPosition(*window);
 	Vect2 mousePos = { position.x * 1.f , position.y * 1.f };
 	Vect2 direction = (mousePos - this->pos);
-	rotateShape(direction);
+	//rotateShape(direction);
 }
