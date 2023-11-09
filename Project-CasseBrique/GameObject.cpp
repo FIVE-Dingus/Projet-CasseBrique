@@ -140,10 +140,15 @@ Shape* GameObject::getTexture()
 
 void GameObject::rotateShape(Vect2 direction) {
 	this->circle.rotate(direction.getAngle());
+	this->rect.rotate(direction.getAngle());
 }
 
 void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange)
 {
 	this->deltaTime = deltaTime;
 	this->deltaTimeWithoutTimeChange = deltaTimeWithoutTimeChange;
+	Vector2i position = Mouse::getPosition();
+	Vect2 mousePos = { position.x , position.y };
+	Vect2 direction = (mousePos - this->pos);
+	rotateShape(direction);
 }
