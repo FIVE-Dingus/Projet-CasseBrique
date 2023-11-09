@@ -14,7 +14,11 @@ private:
 
 	MyColor color;
 
-	Shape* shape;
+	CircleShape circle;
+	RectangleShape rect;
+	CircleShape empty;
+	bool isCircle;
+	bool isEmpty;
 
 public:
 	GameObject();
@@ -31,9 +35,11 @@ public:
 
 	void createRect();
 	void createCircle();
+	void createEmpty();
 	Shape* getTexture();
 	void rotateShape(Vect2 direction);
-	void refresh();
+	void update();
+	void updateGraphic();
 
 private:
 	void createShape();
