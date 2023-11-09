@@ -45,8 +45,8 @@ GameObject::GameObject(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, siz
 
 void GameObject::setPosition(Vect2 pos)
 {
-	this->circle.setOrigin((this->size / 4).getVector2f());
-	this->rect.setOrigin((this->size / 2).getVector2f());
+	this->circle.setOrigin((this->size / 2).getVector2f());
+	this->rect.setOrigin((this->defaultSize / 2).getVector2f());
 
 	this->pos = pos;
 	this->circle.setPosition(this->pos.x(), this->pos.y());
@@ -55,8 +55,8 @@ void GameObject::setPosition(Vect2 pos)
 
 void GameObject::setSize(int d)
 {
-	this->circle.setOrigin((this->size / 4).getVector2f());
-	this->rect.setOrigin((this->size / 2).getVector2f());
+	this->circle.setOrigin((this->size / 2).getVector2f());
+	this->rect.setOrigin((this->defaultSize / 2).getVector2f());
 
 	this->size = Vect2(d /2, d /2);
 	this->circle.setRadius(this->size.x() /2);
@@ -66,8 +66,8 @@ void GameObject::setSize(int d)
 
 void GameObject::setSize(Vect2 size)
 {
-	this->circle.setOrigin((this->size / 4).getVector2f());
-	this->rect.setOrigin((this->size / 2).getVector2f());
+	this->circle.setOrigin((this->size / 2).getVector2f());
+	this->rect.setOrigin((this->defaultSize / 2).getVector2f());
 
 	this->size = size;
 	this->circle.setRadius(this->size.x() /2);
