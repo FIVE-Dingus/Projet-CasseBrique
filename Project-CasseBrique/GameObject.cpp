@@ -22,7 +22,7 @@ GameObject::GameObject(Vect2 pos, int d)
 	this->defaultSize = { 1, 1 };
 	this->createCircle();
 	this->setPosition(pos);
-	this->setSize(size);
+	this->setSize(Vect2(d, d));
 }
 
 GameObject::GameObject(Vect2 pos, int d, MyColor col) : GameObject(pos, d)
