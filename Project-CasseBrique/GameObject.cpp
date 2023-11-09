@@ -142,12 +142,8 @@ void GameObject::rotateShape(Vect2 direction) {
 	this->circle.rotate(direction.getAngle());
 }
 
-void GameObject::update()
+void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange)
 {
-
-}
-
-void GameObject::updateGraphic()
-{
-
+	this->deltaTime = deltaTime;
+	this->deltaTimeWithoutTimeChange = deltaTimeWithoutTimeChange;
 }

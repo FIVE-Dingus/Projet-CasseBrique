@@ -6,6 +6,10 @@
 using namespace sf;
 
 class GameObject {
+public:
+	float deltaTime;
+	float deltaTimeWithoutTimeChange;
+
 private:
 	Vect2 pos;
 	Vect2 defaultSize;
@@ -38,8 +42,7 @@ public:
 	void createEmpty();
 	Shape* getTexture();
 	void rotateShape(Vect2 direction);
-	void update();
-	void updateGraphic();
+	void update(float deltaTime, float deltaTimeWithoutTimeChange);
 
 private:
 	void createShape();
