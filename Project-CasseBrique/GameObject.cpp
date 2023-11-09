@@ -7,9 +7,9 @@ using namespace std;
 GameObject::GameObject()
 {
 	this->defaultSize = { 1, 1 };
-	this->createEmpty();
 	this->setPosition(pos);
 	this->setSize(size);
+	this->createEmpty();
 }
 
 GameObject::GameObject(MyColor col) : GameObject()
@@ -20,9 +20,9 @@ GameObject::GameObject(MyColor col) : GameObject()
 GameObject::GameObject(Vect2 pos, int d)
 {
 	this->defaultSize = { 1, 1 };
-	this->createCircle();
 	this->setPosition(pos);
 	this->setSize(Vect2(d, d));
+	this->createCircle();
 }
 
 GameObject::GameObject(Vect2 pos, int d, MyColor col) : GameObject(pos, d)
@@ -33,9 +33,9 @@ GameObject::GameObject(Vect2 pos, int d, MyColor col) : GameObject(pos, d)
 GameObject::GameObject(Vect2 pos, Vect2 size)
 {
 	this->defaultSize = { 1, 1 };
-	this->createRect();
 	this->setPosition(pos);
 	this->setSize(size);
+	this->createRect();
 }
 
 GameObject::GameObject(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, size)
@@ -45,6 +45,9 @@ GameObject::GameObject(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, siz
 
 void GameObject::setPosition(Vect2 pos)
 {
+	this->circle.setOrigin((this->size / 4).getVector2f());
+	this->rect.setOrigin((this->size / 2).getVector2f());
+
 	this->pos = pos;
 	this->circle.setPosition(this->pos.x(), this->pos.y());
 	this->rect.setPosition(this->pos.x(), this->pos.y());
@@ -52,17 +55,23 @@ void GameObject::setPosition(Vect2 pos)
 
 void GameObject::setSize(int d)
 {
+	this->circle.setOrigin((this->size / 4).getVector2f());
+	this->rect.setOrigin((this->size / 2).getVector2f());
+
 	this->size = Vect2(d /2, d /2);
 	this->circle.setRadius(this->size.x() /2);
-	this->circle.setPointCount(this->size.y());
+	this->circle.setPointCount(this->size.y() /2);
 	this->rect.setScale(this->size.x() / this->defaultSize.x(), this->size.y() / this->defaultSize.y());
 }
 
 void GameObject::setSize(Vect2 size)
 {
+	this->circle.setOrigin((this->size / 4).getVector2f());
+	this->rect.setOrigin((this->size / 2).getVector2f());
+
 	this->size = size;
 	this->circle.setRadius(this->size.x() /2);
-	this->circle.setPointCount(this->size.y());
+	this->circle.setPointCount(this->size.y() /2);
 	this->rect.setScale(this->size.x() / this->defaultSize.x(), this->size.y() / this->defaultSize.y());
 }
 
@@ -99,9 +108,12 @@ void GameObject::createEmpty()
 
 void GameObject::createShape()
 {
+	this->circle.setOrigin((this->size / 2).getVector2f());
+	this->rect.setOrigin((this->defaultSize / 2).getVector2f());
+
 	this->circle.setPosition(this->pos.x(), this->pos.y());
 	this->circle.setRadius(this->size.x() /2);
-	this->circle.setPointCount(this->size.y());
+	this->circle.setPointCount(this->size.y() /2);
 	this->circle.setFillColor(this->color.getSfColor());
 
 	this->rect.setPosition(this->pos.x(), this->pos.y());

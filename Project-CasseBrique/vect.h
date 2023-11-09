@@ -5,20 +5,20 @@ using namespace sf;
 class Vect2
 {
 private:
-	int _x;
-	int _y;
+	float _x;
+	float _y;
 	bool abs;
 
 public:
 	Vect2();
 	Vect2(bool abs);
-	Vect2(int x, int y);
-	Vect2(int x, int y, bool abs);
+	Vect2(float x, float y);
+	Vect2(float x, float y, bool abs);
 	void setIfOnlyInAbs(bool abs);
-	int x();
-	int y();
+	float x();
+	float y();
 
-	int norme();
+	float norme();
 	Vect2 normal();
 	void normalize();
 	float getAngle();
@@ -27,16 +27,16 @@ public:
 	Vector2f getVector2f();
 	VideoMode getVideoMode();
 
-	Vect2 operator*(int val);
-	Vect2 operator/(int val);
-	int operator*(Vect2 otherVect2);
+	Vect2 operator*(float val);
+	Vect2 operator/(float val);
+	float operator*(Vect2 otherVect2);
 	Vect2 operator+(Vect2 otherVect2);
 	Vect2 operator-(Vect2 otherVect2);
 
 	void operator=(Vect2 otherVect2);
 
-	void operator*=(int val);
-	void operator/=(int val);
+	void operator*=(float val);
+	void operator/=(float val);
 	void operator+=(Vect2 otherVect2);
 	void operator-=(Vect2 otherVect2);
 

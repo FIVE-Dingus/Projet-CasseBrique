@@ -11,11 +11,11 @@ Vect2::Vect2(bool abs) : Vect2(0, 0, abs)
 {
 }
 
-Vect2::Vect2(int x, int y) : Vect2(x, y, false)
+Vect2::Vect2(float x, float y) : Vect2(x, y, false)
 {
 }
 
-Vect2::Vect2(int x, int y, bool abs)
+Vect2::Vect2(float x, float y, bool abs)
 {
 	_x = x;
 	_y = y;
@@ -28,17 +28,17 @@ void Vect2::setIfOnlyInAbs(bool abs)
 	abs = abs;
 }
 
-int Vect2::x()
+float Vect2::x()
 {
 	return _x;
 }
 
-int Vect2::y()
+float Vect2::y()
 {
 	return _y;
 }
 
-int Vect2::norme()
+float Vect2::norme()
 {
 	return sqrt((_x * _x) + (_y * _y));
 }
@@ -77,19 +77,19 @@ VideoMode Vect2::getVideoMode()
 	return VideoMode(_x, _y);
 }
 
-Vect2 Vect2::operator*(int val)
+Vect2 Vect2::operator*(float val)
 {
 	Vect2 newVect2(_x * val, _y * val);
 	return newVect2;
 }
 
-Vect2 Vect2::operator/(int val)
+Vect2 Vect2::operator/(float val)
 {
 	Vect2 newVect2(_x / val, _y / val);
 	return newVect2;
 }
 
-int Vect2::operator*(Vect2 otherVect2)
+float Vect2::operator*(Vect2 otherVect2)
 {
 	return (_x * otherVect2.x()) + (_y * otherVect2.y());
 }
@@ -113,14 +113,14 @@ void Vect2::operator=(Vect2 otherVect2)
 	makeAbsolute();
 }
 
-void Vect2::operator*=(int val)
+void Vect2::operator*=(float val)
 {
 	_x = _x * val;
 	_y = _y * val;
 	makeAbsolute();
 }
 
-void Vect2::operator/=(int val)
+void Vect2::operator/=(float val)
 {
 	_x = _x / val;
 	_y = _y / val;
