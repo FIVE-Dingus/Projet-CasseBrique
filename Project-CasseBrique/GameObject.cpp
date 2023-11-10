@@ -183,7 +183,7 @@ void GameObject::rotateShape(Vect2 direction) {
 void GameObject::move(RenderWindow* window) {
 	Vector2i position = Mouse::getPosition(*window);
 	Vect2 mousePos = { position.x * 1.f , position.y * 1.f };
-	sf::Vector2f circlePosition = circle.getPosition();
+	Vector2f circlePosition = circle.getPosition();
 	Vect2 direction = (mousePos - this->pos);
 	this->circle.move(direction.getAngle(), direction.getAngle());
 }
@@ -196,4 +196,5 @@ void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange, Rende
 	Vect2 mousePos = { position.x * 1.f , position.y * 1.f };
 	Vect2 direction = (mousePos - this->pos);
 	rotateShape(direction);
+	move(window);
 }
