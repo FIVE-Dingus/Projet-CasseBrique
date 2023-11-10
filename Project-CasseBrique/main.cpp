@@ -6,16 +6,17 @@ using namespace sf;
 
 void Main::initGameObjects()
 {
-    MyColor col1 = {0xff0000};
-    MyColor col2 = {0x00ffff};
+    MyColor col1;
+    MyColor col2;
+    col1.setHSV(360100100);
+    col1.setHSV(000100100);
     MyColor mixed;
     float pct = 0.f;
     for (int i = 0; i < 500; i++)
     {
         pct = i / 500.f;
-        cout << pct << endl;
-        col1.mixin(col2, &mixed, pct);
-        this->newGameObjects(GameObject(Vect2(0, 0), Vect2(500 - i, 500), mixed));
+        col1.HSVmixin(col2, &mixed, pct);
+        this->newGameObjects(GameObject(Vect2(i, 0), Vect2(1, 500), mixed));
         this->allGameObjects[i].setOrigin({0, 0});
     }
 }

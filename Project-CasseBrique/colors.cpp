@@ -95,14 +95,14 @@ void MyColor::printColor(bool includeAlpha)
 	cout << "} ";
 }
 
-MyColor MyColor::mixin(MyColor otherCol, int pct)
+MyColor MyColor::mixin(MyColor otherCol, float pct)
 {
 	MyColor mixed;
 	mixin(otherCol, &mixed, pct);
 	return mixed;
 }
 
-void MyColor::mixin(MyColor otherCol, MyColor* savedColor, int pct)
+void MyColor::mixin(MyColor otherCol, MyColor* savedColor, float pct)
 {
 	savedColor->setRGBA(
 		(otherCol.r() - _r) * pct + _r,
@@ -112,14 +112,14 @@ void MyColor::mixin(MyColor otherCol, MyColor* savedColor, int pct)
 	);
 }
 
-MyColor MyColor::tripleMixin(MyColor otherCol, MyColor lastColor, int pct)
+MyColor MyColor::tripleMixin(MyColor otherCol, MyColor lastColor, float pct)
 {
 	MyColor mixed;
 	tripleMixin(otherCol, lastColor, &mixed, pct);
 	return mixed;
 }
 
-void MyColor::tripleMixin(MyColor otherCol, MyColor lastColor, MyColor* savedColor, int pct)
+void MyColor::tripleMixin(MyColor otherCol, MyColor lastColor, MyColor* savedColor, float pct)
 {
 	MyColor mix1;
 	MyColor mix2;
@@ -128,14 +128,14 @@ void MyColor::tripleMixin(MyColor otherCol, MyColor lastColor, MyColor* savedCol
 	mix1.mixin(mix2, savedColor, pct);
 }
 
-MyColor MyColor::HSVmixin(MyColor otherCol, int pct)
+MyColor MyColor::HSVmixin(MyColor otherCol, float pct)
 {
 	MyColor mixed;
 	HSVmixin(otherCol, &mixed, pct);
 	return mixed;
 }
 
-void MyColor::HSVmixin(MyColor otherCol, MyColor* savedColor, int pct)
+void MyColor::HSVmixin(MyColor otherCol, MyColor* savedColor, float pct)
 {
 	savedColor->setHSVA(
 		(otherCol.h() - _h) * pct + _h,
@@ -145,14 +145,14 @@ void MyColor::HSVmixin(MyColor otherCol, MyColor* savedColor, int pct)
 	);
 }
 
-MyColor MyColor::HSVtripleMixin(MyColor otherCol, MyColor lastColor, int pct)
+MyColor MyColor::HSVtripleMixin(MyColor otherCol, MyColor lastColor, float pct)
 {
 	MyColor mixed;
 	HSVtripleMixin(otherCol, lastColor, &mixed, pct);
 	return mixed;
 }
 
-void MyColor::HSVtripleMixin(MyColor otherCol, MyColor lastColor, MyColor* savedColor, int pct)
+void MyColor::HSVtripleMixin(MyColor otherCol, MyColor lastColor, MyColor* savedColor, float pct)
 {
 	MyColor mix1;
 	MyColor mix2;

@@ -39,15 +39,15 @@ public:
 	void printColorHex(bool includeAlpha = false);
 	void printColor(bool includeAlpha = false);
 
-	MyColor mixin(MyColor otherCol, int pct = 0.5f);
-	void mixin(MyColor otherCol, MyColor* savedColor, int pct = 0.5f);
-	MyColor tripleMixin(MyColor otherCol, MyColor lastColor, int pct = 0.5f);
-	void tripleMixin(MyColor otherCol, MyColor lastColor, MyColor* savedColor, int pct = 0.5f);
+	MyColor mixin(MyColor otherCol, float pct = 0.5f);
+	void mixin(MyColor otherCol, MyColor* savedColor, float pct = 0.5f);
+	MyColor tripleMixin(MyColor otherCol, MyColor lastColor, float pct = 0.5f);
+	void tripleMixin(MyColor otherCol, MyColor lastColor, MyColor* savedColor, float pct = 0.5f);
 
-	MyColor HSVmixin(MyColor otherCol, int pct = 0.5f);
-	void HSVmixin(MyColor otherCol, MyColor* savedColor, int pct = 0.5f);
-	MyColor HSVtripleMixin(MyColor otherCol, MyColor lastColor, int pct = 0.5f);
-	void HSVtripleMixin(MyColor otherCol, MyColor lastColor, MyColor* savedColor, int pct = 0.5f);
+	MyColor HSVmixin(MyColor otherCol, float pct = 0.5f);
+	void HSVmixin(MyColor otherCol, MyColor* savedColor, float pct = 0.5f);
+	MyColor HSVtripleMixin(MyColor otherCol, MyColor lastColor, float pct = 0.5f);
+	void HSVtripleMixin(MyColor otherCol, MyColor lastColor, MyColor* savedColor, float pct = 0.5f);
 
 	void setR(int r);
 	void setG(int g);
