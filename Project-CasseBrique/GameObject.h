@@ -14,9 +14,10 @@ public:
 
 private:
 	Vect2 pos;
-	Vect2 defaultSize;
 	Vect2 size;
 	Vect2 direction;
+
+	Vect2 defaultSize;
 
 	MyColor color;
 
@@ -42,9 +43,16 @@ public:
 	void setSize(Vect2 size);
 	void setColor(MyColor color);
 
+	void setDirection(Vect2 dir);
+
 	void setOrigin(Vect2 Origin);
 	void setOrigin(Vect2 subdivision, Vect2 Origin);
 	void setSubdivisionOrigin(Vect2 subdivision);
+
+	Vect2 getPos();
+	Vect2 getSize();
+	Vect2 getDirection();
+	Vect2 getMousePos();
 
 	void createRect();
 	void createCircle();
