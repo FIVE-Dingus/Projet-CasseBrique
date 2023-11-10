@@ -211,7 +211,7 @@ void GameObject::rotateShape(Vect2 direction) {
 }
 
 void GameObject::move(float velocity) {
-	Vect2 movement = direction * velocity;
+	Vect2 movement = direction * velocity * this->deltaTime * 100;
 	this->setPosition(pos + movement);
 }
 
