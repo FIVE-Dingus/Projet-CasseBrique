@@ -10,6 +10,8 @@ public:
 	float deltaTime;
 	float deltaTimeWithoutTimeChange;
 
+	Vect2 mousePos;
+
 private:
 	Vect2 pos;
 	Vect2 defaultSize;
@@ -26,8 +28,6 @@ private:
 
 	Vect2 subdivisionOrigin;
 	Vect2 posOrigin;
-
-	Vect2 mousePos;
 
 public:
 	GameObject();
@@ -51,6 +51,7 @@ public:
 	void createEmpty();
 	Shape* getTexture();
 	void rotateShape(Vect2 direction);
+	void move(RenderWindow* window);
 	void update(float deltaTime, float deltaTimeWithoutTimeChange, RenderWindow* window);
 	virtual void update();
 
