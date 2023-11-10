@@ -6,6 +6,7 @@ using namespace sf;
 
 void Main::initGameObjects()
 {
+    this->newGameObjects(GameObject(Vect2(250,250), 50, MyColor(0xff0000)));
 }
 
 void Main::start()
