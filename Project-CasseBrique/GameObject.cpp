@@ -88,6 +88,12 @@ void GameObject::setColor(MyColor color)
 	this->rect.setFillColor(color.getSfColor());
 }
 
+void GameObject::setDirection(Vect2 dir)
+{
+	dir.normalize();
+	this->direction = dir;
+}
+
 void GameObject::setOrigin(Vect2 Origin)
 {
 	Vect2 offset = { this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) };
@@ -117,6 +123,26 @@ void GameObject::setSubdivisionOrigin(Vect2 subdivision)
 	offset = { this->defaultSize.x() * (this->posOrigin.x() / this->subdivisionOrigin.x()), this->defaultSize.y() * (this->posOrigin.y() / this->subdivisionOrigin.y()) };
 	this->pos += offset;
 	this->createShape();
+}
+
+Vect2 GameObject::getPos()
+{
+	return this->pos;
+}
+
+Vect2 GameObject::getSize()
+{
+	return this->pos;
+}
+
+Vect2 GameObject::getDirection()
+{
+	return this->pos;
+}
+
+Vect2 GameObject::getMousePos()
+{
+	return this->pos;
 }
 
 void GameObject::createRect()
