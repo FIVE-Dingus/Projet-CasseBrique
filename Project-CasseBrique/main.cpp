@@ -7,7 +7,9 @@ using namespace sf;
 
 void Main::initGameObjects()
 {
-    this->newGameObjects(new Ball(Vect2(250,250), 50, MyColor(0xff0000)));
+    this->newGameObjects(new Ball(Vect2(100, 100), 100, MyColor(0x00ff00)));
+    this->newGameObjects(new Ball(Vect2(100, 100), Vect2(60, 20), MyColor(0x000000, 100)));
+    this->allGameObjects[1]->setOrigin({ 0, 1 });
 }
 
 void Main::start()

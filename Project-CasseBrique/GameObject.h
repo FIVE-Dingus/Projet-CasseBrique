@@ -55,7 +55,6 @@ public:
 	Vect2 getPos();
 	Vect2 getSize();
 	Vect2 getDirection();
-	Vect2 getMousePos();
 
 	void createRect();
 	void createCircle();

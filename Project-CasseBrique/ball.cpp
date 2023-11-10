@@ -11,6 +11,6 @@ void Ball::update()
 {
 	this->setDirection(mousePos - this->getPos());
 	this->rotateShape(this->getDirection());
-	this->move(0.02);
+	this->move(0.2);
 
 }

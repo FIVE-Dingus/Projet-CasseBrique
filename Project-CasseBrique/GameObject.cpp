@@ -136,17 +136,12 @@ Vect2 GameObject::getPos()
 
 Vect2 GameObject::getSize()
 {
-	return this->pos;
+	return this->size;
 }
 
 Vect2 GameObject::getDirection()
 {
-	return this->pos;
-}
-
-Vect2 GameObject::getMousePos()
-{
-	return this->pos;
+	return this->direction;
 }
 
 void GameObject::createRect()
