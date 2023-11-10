@@ -23,7 +23,7 @@ public:
 	MyWindow(Vect2 size, bool lockedSize = true);
 	bool isOpen();
 
-	void drawGameObjects(vector<GameObject> gameObject);
+	void drawGameObjects(vector<GameObject*> gameObject);
 	void drawGameObject(GameObject gameObject);
 	void draw();
 

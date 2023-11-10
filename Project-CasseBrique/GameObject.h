@@ -27,6 +27,8 @@ private:
 	Vect2 subdivisionOrigin;
 	Vect2 posOrigin;
 
+	Vect2 mousePos;
+
 public:
 	GameObject();
 	GameObject(MyColor col);
@@ -50,6 +52,7 @@ public:
 	Shape* getTexture();
 	void rotateShape(Vect2 direction);
 	void update(float deltaTime, float deltaTimeWithoutTimeChange, RenderWindow* window);
+	virtual void update();
 
 private:
 	void createShape();
