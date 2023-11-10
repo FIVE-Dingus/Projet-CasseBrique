@@ -30,12 +30,12 @@ void MyWindow::setParams(Vect2 size, bool lockedSize)
 	this->renderWindow.pollEvent(this->event);
 }
 
-void MyWindow::drawGameObjects(vector<GameObject> gameObject)
+void MyWindow::drawGameObjects(vector<GameObject*> gameObject)
 {
 	int size = gameObject.size();
 	for (int i = 0; i < size; i++)
 	{
-		this->drawGameObject(gameObject[i]);
+		this->drawGameObject(*gameObject[i]);
 	}
 }
 

@@ -7,7 +7,7 @@ class Main
 {
 private:
 	MyWindow window;
-	vector<GameObject> allGameObjects;
+	vector<GameObject*> allGameObjects;
 	float worldSpeed;
 	Clock clock;
 
@@ -16,7 +16,7 @@ public:
 
 private:
 	void initGameObjects();
-	void newGameObjects(GameObject obj);
+	void newGameObjects(GameObject* obj);
 	void updateGameObject();
 	void start();
 };

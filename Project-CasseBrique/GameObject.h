@@ -10,6 +10,8 @@ public:
 	float deltaTime;
 	float deltaTimeWithoutTimeChange;
 
+	Vect2 mousePos;
+
 private:
 	Vect2 pos;
 	Vect2 defaultSize;
@@ -51,6 +53,7 @@ public:
 	void rotateShape(Vect2 direction);
 	void move(RenderWindow* window);
 	void update(float deltaTime, float deltaTimeWithoutTimeChange, RenderWindow* window);
+	virtual void update();
 
 private:
 	void createShape();

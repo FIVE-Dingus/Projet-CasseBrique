@@ -25,6 +25,12 @@
     <Filter Include="Fichiers sources\GameObject">
       <UniqueIdentifier>{047ea51c-4564-419a-9ee2-87370b58922e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\GameObject\scripts">
+      <UniqueIdentifier>{5eb742b1-ad62-48a5-9f0e-7a1e3cce7b13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameObject\scripts">
+      <UniqueIdentifier>{e30fa546-8edf-405c-b58d-eb9735dd4da5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,6 +48,9 @@
     <ClCompile Include="colors.cpp">
       <Filter>Fichiers sources\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="ball.cpp">
+      <Filter>Fichiers sources\GameObject\scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -55,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="colors.h">
       <Filter>Fichiers d%27en-tête\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ball.h">
+      <Filter>Fichiers d%27en-tête\GameObject\scripts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
