@@ -6,19 +6,6 @@ using namespace sf;
 
 void Main::initGameObjects()
 {
-    MyColor col1;
-    MyColor col2;
-    col1.setHSV(360100100);
-    col1.setHSV(000100100);
-    MyColor mixed;
-    float pct = 0.f;
-    for (int i = 0; i < 500; i++)
-    {
-        pct = i / 500.f;
-        col1.HSVmixin(col2, &mixed, pct);
-        this->newGameObjects(GameObject(Vect2(i, 0), Vect2(1, 500), mixed));
-        this->allGameObjects[i].setOrigin({0, 0});
-    }
 }
 
 void Main::start()
