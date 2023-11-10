@@ -26,13 +26,14 @@ void Main::updateGameObject()
     int size = this->allGameObjects.size();
     for (int i = 0; i < size; i++)
     {
-        this->allGameObjects[i]->update(deltaTime * this->worldSpeed, deltaTime, this->window.getSfWindow());
+        this->allGameObjects[i]->update(deltaTime * this->worldSpeed, deltaTime);
     }
 }
 
 void Main::newGameObjects(GameObject* obj)
 {
     this->allGameObjects.resize(this->allGameObjects.size() + 1);
+    obj->setWindow(this->window.getSfWindow());
     this->allGameObjects[this->allGameObjects.size() -1] = obj;
 }
 

@@ -30,6 +30,8 @@ private:
 	Vect2 subdivisionOrigin;
 	Vect2 posOrigin;
 
+	RenderWindow* window;
+
 public:
 	GameObject();
 	GameObject(MyColor col);
@@ -38,6 +40,7 @@ public:
 	GameObject(Vect2 pos, Vect2 size);
 	GameObject(Vect2 pos, Vect2 size, MyColor col);
 
+	void setWindow(RenderWindow* window);
 	void setPosition(Vect2 pos);
 	void setSize(int d);
 	void setSize(Vect2 size);
@@ -59,8 +62,8 @@ public:
 	void createEmpty();
 	Shape* getTexture();
 	void rotateShape(Vect2 direction);
-	void move(RenderWindow* window);
-	void update(float deltaTime, float deltaTimeWithoutTimeChange, RenderWindow* window);
+	void move(float velocity);
+	void update(float deltaTime, float deltaTimeWithoutTimeChange);
 	virtual void update();
 
 private:

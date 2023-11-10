@@ -9,5 +9,7 @@ Ball::Ball(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, size, col) {};
 
 void Ball::update()
 {
-	cout << "holla" << endl;
+	this->rotateShape(this->getDirection());
+	this->move(0.0002);
+
 }
