@@ -11,6 +11,7 @@ public:
 	float deltaTimeWithoutTimeChange;
 
 	Vect2 mousePos;
+	Vect2 mousePosCopy;
 
 private:
 	Vect2 pos;

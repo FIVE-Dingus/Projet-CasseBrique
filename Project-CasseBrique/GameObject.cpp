@@ -96,7 +96,7 @@ void GameObject::setColor(MyColor color)
 
 void GameObject::setDirection(Vect2 dir)
 {
-	dir.normalize();
+	//dir.normalize();
 	this->direction = dir;
 }
 
@@ -221,6 +221,10 @@ void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange)
 	this->deltaTimeWithoutTimeChange = deltaTimeWithoutTimeChange;
 	Vector2i position = Mouse::getPosition(*window);
 	this->mousePos = { position.x * 1.f , position.y * 1.f };
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		this->mousePosCopy = mousePos;
+	}
 	this->update();
 }
 

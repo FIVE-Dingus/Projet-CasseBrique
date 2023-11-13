@@ -60,6 +60,9 @@
     <ClCompile Include="maths.cpp">
       <Filter>Fichiers sources\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="rect.cpp">
+      <Filter>Fichiers sources\GameObject\scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -75,6 +78,9 @@
       <Filter>Fichiers d%27en-tête\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="ball.h">
+      <Filter>Fichiers d%27en-tête\GameObject\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="rect.h">
       <Filter>Fichiers d%27en-tête\GameObject\scripts</Filter>
     </ClInclude>
     <ClInclude Include="maths.h">
