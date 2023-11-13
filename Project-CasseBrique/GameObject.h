@@ -32,6 +32,9 @@ private:
 
 	RenderWindow* window;
 
+	bool isCollide;
+	bool isCollideThisTurn;
+
 public:
 	GameObject();
 	GameObject(MyColor col);
@@ -62,9 +65,22 @@ public:
 	Shape* getTexture();
 	void rotateShape(Vect2 direction);
 	void move(float velocity);
+
+	int getObjectType();
+	bool checkCollision(GameObject* otherObj);
+
 	void update(float deltaTime, float deltaTimeWithoutTimeChange);
 	virtual void update();
 
+	void informeCollide(bool colide, GameObject* otherObj);
+	virtual void colliding(GameObject* otherObj);
+	virtual void collideEnter(GameObject* otherObj);
+	virtual void collideExit();
+
 private:
 	void createShape();
+
+	bool collisionAABBtoAABB(GameObject* otherObj);
+	bool collisionAABBtoCircle(GameObject* otherObj);
+	bool collisionCircletoCircle(GameObject* otherObj);
 };

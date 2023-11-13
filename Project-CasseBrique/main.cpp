@@ -24,6 +24,7 @@ void Main::start()
     while (this->window.isOpen())
     {
         this->updateGameObject();
+        this->checkCollides();
         this->window.drawGameObjects(this->allGameObjects);
         this->window.draw();
     }
@@ -43,7 +44,31 @@ void Main::newGameObjects(GameObject* obj)
 {
     this->allGameObjects.resize(this->allGameObjects.size() + 1);
     obj->setWindow(this->window.getSfWindow());
-    this->allGameObjects[this->allGameObjects.size() -1] = obj;
+    this->allGameObjects[this->allGameObjects.size() - 1] = obj;
+}
+
+void Main::checkCollides()
+{
+    int size = this->allGameObjects.size();
+    for (int i = 1; i < size; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (this->allGameObjects[i]->checkCollision(this->allGameObjects[j]))
+            {
+                this->allGameObjects[i]->informeCollide(true, this->allGameObjects[j]);
+                this->allGameObjects[j]->informeCollide(true, this->allGameObjects[i]);
+            }
+        }
+    }
+    for (int i = 1; i < size; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            this->allGameObjects[i]->informeCollide(false, this->allGameObjects[j]);
+            this->allGameObjects[j]->informeCollide(false, this->allGameObjects[i]);
+        }
+    }
 }
 
 Main::Main()

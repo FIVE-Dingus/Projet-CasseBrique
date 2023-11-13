@@ -1,8 +1,10 @@
 #include "gameObject.h"
+#include "maths.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace sf;
 using namespace std;
+using namespace Maths;
 
 GameObject::GameObject()
 {
@@ -156,7 +158,7 @@ void GameObject::createCircle()
 {
 	this->isEmpty = false;
 	this->isCircle = true;
-	this->circle = CircleShape(this->size.x(), this->size.y());
+	this->circle = CircleShape(this->size.x() /2);
 	this->createShape();
 }
 
@@ -175,7 +177,6 @@ void GameObject::createShape()
 
 	this->circle.setPosition(this->pos.x(), this->pos.y());
 	this->circle.setRadius(this->size.x() /2);
-	this->circle.setPointCount(this->size.y() /2);
 	this->circle.setFillColor(this->color.getSfColor());
 
 	this->rect.setPosition(this->pos.x(), this->pos.y());
@@ -189,15 +190,18 @@ void GameObject::createShape()
 
 Shape* GameObject::getTexture()
 {
-	if (this->isEmpty)
+	switch (getObjectType())
 	{
+	case 0:
+		return &empty;
+	case 1:
+		return &rect;
+	case 2:
+		return &circle;
+
+	default:
 		return &empty;
 	}
-	if (this->isCircle)
-	{
-		return &circle;
-	}
-	return &rect;
 }
 
 void GameObject::rotateShape(Vect2 direction) {
@@ -212,6 +216,7 @@ void GameObject::move(float velocity) {
 
 void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange)
 {
+	this->isCollideThisTurn = false;
 	this->deltaTime = deltaTime;
 	this->deltaTimeWithoutTimeChange = deltaTimeWithoutTimeChange;
 	Vector2i position = Mouse::getPosition(*window);
@@ -219,4 +224,129 @@ void GameObject::update(float deltaTime, float deltaTimeWithoutTimeChange)
 	this->update();
 }
 
+int GameObject::getObjectType()
+{
+	if (this->isEmpty)
+	{
+		return 0;
+	}
+	if (this->isCircle)
+	{
+		return 2;
+	}
+	return 1;
+}
+
+bool GameObject::checkCollision(GameObject* otherObj)
+{
+	int type1 = getObjectType();
+	int type2 = otherObj->getObjectType();
+	if (type1 == 0 || type2 == 0)
+	{
+		return false;
+	}
+	else if (type1 == 1 && type2 == 1)
+	{
+		return collisionAABBtoAABB(otherObj);
+	}
+	else if (type1 == 2 && type2 == 2)
+	{
+		return collisionCircletoCircle(otherObj);
+	}
+	else if (type1 == 1 && type2 == 2)
+	{
+		return collisionAABBtoCircle(otherObj);
+	}
+	else if (type1 == 2 && type2 == 1)
+	{
+		return otherObj->collisionAABBtoCircle(this);
+	}
+}
+
+bool GameObject::collisionAABBtoAABB(GameObject* otherObj)
+{
+	Vect2 tempPos;
+	Vect2 pos1_x = { pos.x(), pos.x() + size.x() };
+	Vect2 pos2_x = { otherObj->getPos().x(), otherObj->getPos().x() + otherObj->getSize().x() };
+	Vect2 pos1_y = { pos.y(), pos.y() + size.y() };
+	Vect2 pos2_y = { otherObj->getPos().y(), otherObj->getPos().y() + otherObj->getSize().y() };
+
+	if (abs(pos1_x.y() - pos1_x.x()) > abs(pos2_x.y() - pos2_x.x()))
+	{
+		tempPos = pos2_x;
+		pos2_x = pos1_x;
+		pos1_x = tempPos;
+	}
+
+	if (abs(pos1_y.y() - pos1_y.x()) > abs(pos2_y.y() - pos2_y.x()))
+	{
+		tempPos = pos2_y;
+		pos2_y = pos1_y;
+		pos1_y = tempPos;
+	}
+
+	if (!isBeetwen(pos1_x.x(), pos2_x.x(), pos2_x.y()) && !isBeetwen(pos1_x.y(), pos2_x.x(), pos2_x.y()))
+	{
+		return false;
+	}
+
+	if (!isBeetwen(pos1_y.x(), pos2_y.x(), pos2_y.y()) && !isBeetwen(pos1_y.y(), pos2_y.x(), pos2_y.y()))
+	{
+		return false;
+	}
+
+	return true;
+}
+
+bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
+{
+	Vect2 dir = (this->pos - otherObj->getPos()).normal() * otherObj->getSize().x();
+	Vect2 pointToTest = otherObj->getPos() + dir;
+	if (isBeetwen(pointToTest.x(), this->pos.x(), this->pos.x() + this->size.x()) && isBeetwen(pointToTest.y(), this->pos.y(), this->pos.y() + this->size.y()))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool GameObject::collisionCircletoCircle(GameObject* otherObj)
+{
+	int minDist = this->size.x() / 2 + otherObj->getSize().x() / 2;
+	int dist = (this->pos - otherObj->getPos()).norme();
+	return minDist >= dist;
+}
+
+void GameObject::informeCollide(bool colide, GameObject* otherObj)
+{
+	if (!this->isCollide && colide)
+	{
+		this->isCollideThisTurn = true;
+		this->isCollide = true;
+		this->collideEnter(otherObj);
+		this->colliding(otherObj);
+	}
+	else if (this->isCollide && !colide && !this->isCollideThisTurn)
+	{
+		this->isCollide = false;
+		this->collideExit();
+	}
+	else if (this->isCollide && colide)
+	{
+		this->isCollideThisTurn = true;
+		this->colliding(otherObj);
+	}
+}
+
 void GameObject::update() {}
+void GameObject::colliding(GameObject* otherObj) {
+
+}
+void GameObject::collideEnter(GameObject* otherObj) {
+	this->circle.setFillColor(MyColor(0xff0000).getSfColor());
+	this->rect.setFillColor(MyColor(0xff0000).getSfColor());
+}
+
+void GameObject::collideExit() {
+	this->circle.setFillColor(this->color.getSfColor());
+	this->rect.setFillColor(this->color.getSfColor());
+}

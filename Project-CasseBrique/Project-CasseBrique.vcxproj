@@ -139,6 +139,7 @@
     <ClCompile Include="colors.cpp" />
     <ClCompile Include="gameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="maths.cpp" />
     <ClCompile Include="rect.cpp" />
     <ClCompile Include="vect.cpp" />
     <ClCompile Include="window.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="ball.h" />
     <ClInclude Include="colors.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="maths.h" />
     <ClInclude Include="rect.h" />
     <ClInclude Include="vect.h" />
     <ClInclude Include="window.h" />
