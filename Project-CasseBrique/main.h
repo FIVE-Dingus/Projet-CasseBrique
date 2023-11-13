@@ -19,4 +19,5 @@ private:
 	void newGameObjects(GameObject* obj);
 	void updateGameObject();
 	void start();
+	void checkCollides();
 };
