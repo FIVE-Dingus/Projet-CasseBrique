@@ -2,6 +2,7 @@
 #include "maths.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "main.h"
 using namespace sf;
 using namespace std;
 using namespace Maths;

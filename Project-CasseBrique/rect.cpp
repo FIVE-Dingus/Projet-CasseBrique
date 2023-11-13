@@ -9,5 +9,6 @@ MyRect::MyRect(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, size, col) 
 
 void MyRect::update()
 {
-
+	this->setDirection(mousePos - this->getPos());
+	this->rotateShape(this->getDirection());
 }
