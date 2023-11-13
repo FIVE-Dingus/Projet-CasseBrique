@@ -59,8 +59,6 @@ void MyWindow::draw()
 		renderWindow.setSize(this->size.getVector2u());
 	}
 
-	renderWindow.clear();
-
 	int size = gameObjects.size();
 	for (int i = 0; i < size; i++)
 	{
@@ -70,6 +68,8 @@ void MyWindow::draw()
 	renderWindow.display();
 
 	gameObjects.resize(0);
+
+	renderWindow.clear();
 }
 
 RenderWindow* MyWindow::getSfWindow()
