@@ -16,7 +16,7 @@ void Main::initGameObjects()
         this->newGameObjects(new MyRect(Vect2(i, 190), Vect2(60, 20), MyColor(0xfff0ff)));
         this->newGameObjects(new MyRect(Vect2(i, 220), Vect2(60, 20), MyColor(0xff0ff0)));
     }
-    this->newGameObjects(new Ball(Vect2(400, 700), 50, MyColor(0xffffff)));
+    this->newGameObjects(new Ball(Vect2(400, 700), 50, MyColor(0xffffff))); 
 }
 
 void Main::start()
