@@ -9,7 +9,10 @@ Ball::Ball(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, size, col) {};
 
 void Ball::update()
 {
-	this->setDirection(mousePosCopy - this->getPos());
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		this->setDirection(mousePos - this->getPos());
+	}
 	//this->rotateShape(this->getDirection());
-	this->move(0.002);
+	this->move(0.01);
 }
