@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-MyWindow::MyWindow() : MyWindow(Vect2(500, 500), true) {}
+MyWindow::MyWindow() : MyWindow(Vect2(800, 800), true) {}
 
 MyWindow::MyWindow(Vect2 size, bool lockedSize)
 {
