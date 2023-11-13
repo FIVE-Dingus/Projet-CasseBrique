@@ -2,6 +2,7 @@
 #include "main.h"
 #include "GameObject.h"
 #include "ball.h"
+#include "rect.h"
 #include "vect.h"
 using namespace sf;
 
@@ -9,12 +10,13 @@ void Main::initGameObjects()
 {
     for (int i = 65; i < 750; i += 75) {
 
-        this->newGameObjects(new GameObject(Vect2(i, 100), Vect2(60, 20), MyColor(0xfff000)));
-        this->newGameObjects(new GameObject(Vect2(i, 130), Vect2(60, 20), MyColor(0xff0000)));
-        this->newGameObjects(new GameObject(Vect2(i, 160), Vect2(60, 20), MyColor(0x00ff00)));
-        this->newGameObjects(new GameObject(Vect2(i, 190), Vect2(60, 20), MyColor(0xfff0ff)));
-        this->newGameObjects(new GameObject(Vect2(i, 220), Vect2(60, 20), MyColor(0xff0ff0)));
+        this->newGameObjects(new MyRect(Vect2(i, 100), Vect2(60, 20), MyColor(0xfff000)));
+        this->newGameObjects(new MyRect(Vect2(i, 130), Vect2(60, 20), MyColor(0xff0000)));
+        this->newGameObjects(new MyRect(Vect2(i, 160), Vect2(60, 20), MyColor(0x00ff00)));
+        this->newGameObjects(new MyRect(Vect2(i, 190), Vect2(60, 20), MyColor(0xfff0ff)));
+        this->newGameObjects(new MyRect(Vect2(i, 220), Vect2(60, 20), MyColor(0xff0ff0)));
     }
+    this->newGameObjects(new Ball(Vect2(400, 700), 50, MyColor(0xffffff)));
 }
 
 void Main::start()
