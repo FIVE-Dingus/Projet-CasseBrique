@@ -34,6 +34,7 @@ private:
 
 	bool isCollide;
 	bool isCollideThisTurn;
+	bool collisionActive;
 
 public:
 	GameObject();
@@ -68,6 +69,7 @@ public:
 
 	int getObjectType();
 	bool checkCollision(GameObject* otherObj);
+	void activeCollision(bool activation = false);
 
 	void update(float deltaTime, float deltaTimeWithoutTimeChange);
 	virtual void update();

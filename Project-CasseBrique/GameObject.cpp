@@ -9,6 +9,7 @@ using namespace Maths;
 
 GameObject::GameObject()
 {
+	this->collisionActive = true;
 	this->subdivisionOrigin = { 2, 2 };
 	this->posOrigin = { 1, 1 };
 	this->defaultSize = { 1, 1 };
@@ -24,6 +25,7 @@ GameObject::GameObject(MyColor col) : GameObject()
 
 GameObject::GameObject(Vect2 pos, int d)
 {
+	this->collisionActive = true;
 	this->subdivisionOrigin = { 2, 2 };
 	this->posOrigin = { 1, 1 };
 	this->defaultSize = { 1, 1 };
@@ -39,6 +41,7 @@ GameObject::GameObject(Vect2 pos, int d, MyColor col) : GameObject(pos, d)
 
 GameObject::GameObject(Vect2 pos, Vect2 size)
 {
+	this->collisionActive = true;
 	this->subdivisionOrigin = { 2, 2 };
 	this->posOrigin = { 1, 1 };
 	this->defaultSize = { 1, 1 };
@@ -262,6 +265,11 @@ bool GameObject::checkCollision(GameObject* otherObj)
 	{
 		return otherObj->collisionAABBtoCircle(this);
 	}
+}
+
+void GameObject::activeCollision(bool activation = false)
+{
+	this->collisionActive = activation;
 }
 
 bool GameObject::collisionAABBtoAABB(GameObject* otherObj)
