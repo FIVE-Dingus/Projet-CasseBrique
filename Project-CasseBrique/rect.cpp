@@ -11,7 +11,6 @@ MyRect::MyRect(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, size, col) 
 void MyRect::update()
 {
 	this->setDirection(mousePos - this->getPos());
-	std::cout << getDirection().getAngle() << endl;
 	if (-160 < getDirection().getAngle() && getDirection().getAngle() < -10) {
 		this->rotateShape(this->getDirection());
 	}

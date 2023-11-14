@@ -9,6 +9,7 @@ using namespace sf;
 class Ball : public GameObject
 {
 public:
+	int mousePressed = 0;
 	Ball();
 	Ball(MyColor col);
 	Ball(Vect2 pos, int d);

@@ -1,4 +1,5 @@
 #include "ball.h"
+#include "vect.h"
 
 Ball::Ball() : GameObject() {};
 Ball::Ball(MyColor col) : GameObject(col) {};
@@ -11,8 +12,12 @@ void Ball::update()
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
+		mousePressed++;
 		this->setDirection(mousePos - this->getPos());
 	}
-	//this->rotateShape(this->getDirection());
-	this->move(0.01);
+	this->move(1);
+	this->rotateShape(this->getDirection());
+	if (this->collisionAABBtoCircle() == true) {
+		this->setDirection(this->getPos());
+	}
 }

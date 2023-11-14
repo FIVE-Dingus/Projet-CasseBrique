@@ -100,7 +100,7 @@ void GameObject::setColor(MyColor color)
 
 void GameObject::setDirection(Vect2 dir)
 {
-	//dir.normalize();
+	dir.normalize();
 	this->direction = dir;
 }
 
