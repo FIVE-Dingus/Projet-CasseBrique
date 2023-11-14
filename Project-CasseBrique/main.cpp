@@ -8,7 +8,7 @@ using namespace sf;
 
 void Main::initGameObjects()
 {
-    for (int i = 65; i < 750; i += 750) {
+    for (int i = 65; i < 750; i += 75) {
 
         this->newGameObjects(new GameObject(Vect2(i, 100), Vect2(60, 20), MyColor(0xfff000)));
         this->newGameObjects(new GameObject(Vect2(i, 130), Vect2(60, 20), MyColor(0xff0000)));
@@ -18,8 +18,8 @@ void Main::initGameObjects()
     }
     this->newGameObjects(new Ball(Vect2(400, 700), 10, MyColor(0xffffff))); 
     this->newGameObjects(new MyRect(Vect2(400, 700), Vect2(60, 20), MyColor(0xff0ff0)));
-    //this->allGameObjects[51]->setSubdivisionOrigin({ 60, 2 });
-    //this->allGameObjects[51]->setOrigin({ 15, 1 });
+    this->allGameObjects[50]->setSubdivisionOrigin({ 60, 2 });
+    this->allGameObjects[50]->setOrigin({ 15, 1 });
 
 }
 

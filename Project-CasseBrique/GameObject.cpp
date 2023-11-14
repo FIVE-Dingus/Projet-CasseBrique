@@ -267,7 +267,7 @@ bool GameObject::checkCollision(GameObject* otherObj)
 	}
 }
 
-void GameObject::activeCollision(bool activation = false)
+void GameObject::activeCollision(bool activation)
 {
 	this->collisionActive = activation;
 }
