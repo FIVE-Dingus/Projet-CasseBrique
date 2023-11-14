@@ -245,7 +245,11 @@ bool GameObject::checkCollision(GameObject* otherObj)
 {
 	int type1 = getObjectType();
 	int type2 = otherObj->getObjectType();
-	if (type1 == 0 || type2 == 0)
+	if (!this->collisionActive || !otherObj->collisionIsActive())
+	{
+		return false;
+	}
+	else if (type1 == 0 || type2 == 0)
 	{
 		return false;
 	}
@@ -270,6 +274,11 @@ bool GameObject::checkCollision(GameObject* otherObj)
 void GameObject::activeCollision(bool activation)
 {
 	this->collisionActive = activation;
+}
+
+bool GameObject::collisionIsActive()
+{
+	return this->collisionActive;
 }
 
 bool GameObject::collisionAABBtoAABB(GameObject* otherObj)
@@ -322,30 +331,7 @@ bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
 	Vect2 topLeft(this->pos.x() + this->size.x() - offset.x(), this->pos.y() - offset.y());
 	Vect2 botRight(this->pos.x() - offset.x(), this->pos.y() + this->size.y() - offset.y());
 
-	CircleShape circle(7);
-	circle.setPosition((pointToTest - Vect2(7, 7)).getVector2f());
-	circle.setFillColor(MyColor(0x999999).getSfColor());
-	this->window->draw(circle);
-	Vertex line[] =
-	{
-		Vertex(this->pos.getVector2f()),
-		Vertex(otherObj->getPos().getVector2f())
-	};
-	this->window->draw(line, 2, Lines);
-	Vertex line2[] =
-	{
-		Vertex(Vect2(topLeft.x(), pointToTest.y()).getVector2f()),
-		Vertex(Vect2(botRight.x(), pointToTest.y()).getVector2f())
-	};
-	this->window->draw(line2, 2, Lines);
-	Vertex line3[] =
-	{
-		Vertex(Vect2(pointToTest.x(), topLeft.y()).getVector2f()),
-		Vertex(Vect2(pointToTest.x(), botRight.y()).getVector2f())
-	};
-	this->window->draw(line3, 2, Lines);
-
-	if (isBeetwen(pointToTest.x(), topLeft.x(), botRight.x() + this->size.x()) && isBeetwen(pointToTest.y(), topLeft.y(), botRight.y()))
+	if (isBeetwen(pointToTest.x(), topLeft.x(), botRight.x()) && isBeetwen(pointToTest.y(), topLeft.y(), botRight.y()))
 	{
 		return true;
 	}

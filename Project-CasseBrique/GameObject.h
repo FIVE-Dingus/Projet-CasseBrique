@@ -70,6 +70,7 @@ public:
 	int getObjectType();
 	bool checkCollision(GameObject* otherObj);
 	void activeCollision(bool activation = false);
+	bool collisionIsActive();
 
 	void update(float deltaTime, float deltaTimeWithoutTimeChange);
 	virtual void update();
