@@ -14,7 +14,7 @@ void MyRect::update()
 	this->getDirection();
 
 	std::cout << getDirection().getAngle() << endl;
-	if (-160 < getDirection().getAngle() < -10) {
+	if (-160 < getDirection().getAngle() && getDirection().getAngle() < -10) {
 		this->rotateShape(this->getDirection());
 	}
 }
