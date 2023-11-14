@@ -331,6 +331,9 @@ bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
 	Vect2 topLeft(this->pos.x() + this->size.x() - offset.x(), this->pos.y() - offset.y());
 	Vect2 botRight(this->pos.x() - offset.x(), this->pos.y() + this->size.y() - offset.y());
 
+	int offsetX = (int(abs(topLeft.x() - botRight.x()) / abs(topLeft.y() - botRight.y())) | 1 -1) /2;
+	int offsetY = (int(abs(topLeft.y() - botRight.y()) / abs(topLeft.x() - botRight.x())) | 1 -1) /2;
+
 	CircleShape circle(7);
 	circle.setPosition((pointToTest - Vect2(7, 7)).getVector2f());
 	circle.setFillColor(MyColor(0x999999).getSfColor());
@@ -353,6 +356,18 @@ bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
 		Vertex(Vect2(pointToTest.x(), botRight.y()).getVector2f())
 	};
 	this->window->draw(line3, 2, Lines);
+	Vertex line4[] =
+	{
+		Vertex(Vect2(pointToTest.x(), topLeft.y()).getVector2f()),
+		Vertex(Vect2(pointToTest.x(), botRight.y()).getVector2f())
+	};
+	this->window->draw(line4, 2, Lines);
+	Vertex line5[] =
+	{
+		Vertex(Vect2(pointToTest.x(), topLeft.y()).getVector2f()),
+		Vertex(Vect2(pointToTest.x(), botRight.y()).getVector2f())
+	};
+	this->window->draw(line5, 2, Lines);
 
 	if (isBeetwen(pointToTest.x(), topLeft.x(), botRight.x()) && isBeetwen(pointToTest.y(), topLeft.y(), botRight.y()))
 	{
