@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "main.h"
+
 using namespace sf;
 using namespace std;
 using namespace Maths;
@@ -332,11 +333,69 @@ bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
 		return true;
 	}
 
-	Vect2 dir = (this->pos - otherObj->getPos()).normal() * (otherObj->getSize().x() / 2);
-	Vect2 pointToTest = otherObj->getPos() + dir;
 	Vect2 offset(this->size.x() / subdivisionOrigin.x() * posOrigin.x(), this->size.y() / subdivisionOrigin.y() * posOrigin.y());
-	Vect2 topLeft(this->pos.x() + this->size.x() - offset.x(), this->pos.y() - offset.y());
-	Vect2 botRight(this->pos.x() - offset.x(), this->pos.y() + this->size.y() - offset.y());
+	Vect2 mid(this->pos.x() - offset.x() + (this->size.x() / 2), this->pos.y() - offset.y() + (this->size.y() / 2));
+	Vect2 dir = (mid - otherObj->getPos()).normal() * (otherObj->getSize().x() / 2);
+	Vect2 pointToTest = otherObj->getPos() + dir;
+	Vect2 topLeft(mid.x() + this->size.x() - offset.x(), mid.y() - offset.y());
+	Vect2 botRight(mid.x() - offset.x(), mid.y() + this->size.y() - offset.y());
+
+	int offsetX = (int(abs(topLeft.x() - botRight.x()) / abs(topLeft.y() - botRight.y())) | 1);
+	int offsetY = (int(abs(topLeft.y() - botRight.y()) / abs(topLeft.x() - botRight.x())) | 1);
+
+	cout << offsetX << " : " << offsetY << endl;
+
+	if (offsetX - 1 == 0)
+	{
+		cout << "this" << endl;
+		offsetX = mid.x();
+		offsetY = mid.y() - offset.y() + ((this->size.y() / offsetY) * (int(min(offsetY -1, max(0, (otherObj->getPos().y() - topLeft.y()) / (this->size.y() / offsetY)) )) + .5f));
+		if (!isBeetwen(pointToTest.x(), topLeft.x(), botRight.x()))
+		{
+			dir = (Vect2(offsetX, offsetY) - otherObj->getPos()).normal() * (otherObj->getSize().x() / 2);
+			pointToTest = otherObj->getPos() + dir;
+		}
+	}
+	else
+	{
+		cout << "here" << endl;
+		offsetX = mid.x() - offset.x() + ((this->size.x() / offsetX) * (int(min(offsetX -1, max(0, (otherObj->getPos().x() - botRight.x()) / (this->size.x() / offsetX)) )) + .5f));
+		offsetY = mid.y();
+		if (!isBeetwen(pointToTest.y(), topLeft.y(), botRight.y()))
+		{
+			dir = (Vect2(offsetX, offsetY) - otherObj->getPos()).normal() * (otherObj->getSize().x() / 2);
+			pointToTest = otherObj->getPos() + dir;
+		}
+	}
+
+	CircleShape circle(7);
+	circle.setPosition((pointToTest - Vect2(7, 7)).getVector2f());
+	circle.setFillColor(MyColor(0x999999).getSfColor());
+	this->window->draw(circle);
+	Vertex line[] =
+	{
+		Vertex(mid.getVector2f()),
+		Vertex(otherObj->getPos().getVector2f())
+	};
+	this->window->draw(line, 2, Lines);
+	Vertex line2[] =
+	{
+		Vertex(Vect2(topLeft.x(), pointToTest.y()).getVector2f()),
+		Vertex(Vect2(botRight.x(), pointToTest.y()).getVector2f())
+	};
+	this->window->draw(line2, 2, Lines);
+	Vertex line3[] =
+	{
+		Vertex(Vect2(pointToTest.x(), topLeft.y()).getVector2f()),
+		Vertex(Vect2(pointToTest.x(), botRight.y()).getVector2f())
+	};
+	this->window->draw(line3, 2, Lines);
+	Vertex line4[] =
+	{
+		Vertex(Vect2(offsetX, offsetY).getVector2f()),
+		Vertex(otherObj->getPos().getVector2f())
+	};
+	this->window->draw(line4, 2, Lines);
 
 	if (isBeetwen(pointToTest.x(), topLeft.x(), botRight.x()) && isBeetwen(pointToTest.y(), topLeft.y(), botRight.y()))
 	{
