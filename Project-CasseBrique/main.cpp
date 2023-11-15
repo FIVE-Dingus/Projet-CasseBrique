@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "ball.h"
 #include "cannon.h"
+#include "brick.h"
 #include "vect.h"
 using namespace sf;
 
@@ -15,20 +16,21 @@ void Main::initGameObjects()
     MyColor mix1;
     MyColor mix2;
     MyColor mix;
+    this->newGameObjects(new GameObject(Vect2(0, 0), Vect2(0, 0), mix));
     for (int i = 0; i < 10; i++) {
         col1.mixin(col2, &mix1, i / 9.f);
         col3.mixin(col4, &mix2, i / 9.f);
         for (int j = 0; j < 10; j++)
         {
             mix1.mixin(mix2, &mix, j / 9.f);
-            this->newGameObjects(new GameObject(Vect2(75 * i + 65, 30 * j + 100), Vect2(60, 20), mix));
+            this->newGameObjects(new Brick(Vect2(75 * i + 65, 30 * j + 100), Vect2(60, 20), mix));
         }
     }
     this->newGameObjects(new Ball(Vect2(400, 700), 10, MyColor(0xffffff)));
     this->newGameObjects(new Cannon(Vect2(400, 700), Vect2(60, 20), MyColor(0xff0ff0)));
-    this->allGameObjects[101]->activeCollision();
-    this->allGameObjects[101]->setSubdivisionOrigin({ 60, 2 });
-    this->allGameObjects[101]->setOrigin({ 15, 1 });
+    this->allGameObjects[104]->activeCollision();
+    this->allGameObjects[104]->setSubdivisionOrigin({ 60, 2 });
+    this->allGameObjects[104]->setOrigin({ 15, 1 });
 
 }
 

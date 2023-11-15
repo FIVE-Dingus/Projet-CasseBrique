@@ -63,6 +63,9 @@
     <ClCompile Include="cannon.cpp">
       <Filter>Fichiers sources\GameObject\scripts</Filter>
     </ClCompile>
+    <ClCompile Include="brick.cpp">
+      <Filter>Fichiers sources\GameObject\scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="maths.h">
       <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="brick.h">
+      <Filter>Fichiers d%27en-tête\GameObject\scripts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

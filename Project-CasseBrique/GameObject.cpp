@@ -400,15 +400,6 @@ void GameObject::informeCollide(bool colide, GameObject* otherObj)
 }
 
 void GameObject::update() {}
-void GameObject::colliding(GameObject* otherObj) {
-
-}
-void GameObject::collideEnter(GameObject* otherObj) {
-	this->circle.setFillColor(MyColor(0xff0000, 50).getSfColor());
-	this->rect.setFillColor(MyColor(0xff0000, 50).getSfColor());
-}
-
-void GameObject::collideExit() {
-	this->circle.setFillColor(this->color.getSfColor());
-	this->rect.setFillColor(this->color.getSfColor());
-}
+void GameObject::colliding(GameObject* otherObj) {}
+void GameObject::collideEnter(GameObject* otherObj) {}
+void GameObject::collideExit() {}
