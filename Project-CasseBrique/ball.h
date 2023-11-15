@@ -9,6 +9,7 @@ using namespace sf;
 class Ball : public GameObject
 {
 public:
+	int mousePressed = 0;
 	Ball();
 	Ball(MyColor col);
 	Ball(Vect2 pos, int d);
@@ -16,4 +17,5 @@ public:
 	Ball(Vect2 pos, Vect2 size);
 	Ball(Vect2 pos, Vect2 size, MyColor col);
 	void update() override;
+	void collideEnter(GameObject* otherObj) override;
 };

@@ -19,6 +19,8 @@ public:
 	void setIfOnlyInAbs(bool abs);
 	float x();
 	float y();
+	void setX(float x);
+	void setY(float y);
 
 	float norme();
 	Vect2 normal();

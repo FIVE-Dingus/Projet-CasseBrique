@@ -40,6 +40,14 @@ float Vect2::y()
 	return _y;
 }
 
+void Vect2::setX(float x) {
+	this->_x = x;
+}
+
+void Vect2::setY(float y) {
+	this->_y = y;
+}
+
 float Vect2::norme()
 {
 	return sqrt((_x * _x) + (_y * _y));

@@ -10,19 +10,20 @@ public:
 	float deltaTime;
 	float deltaTimeWithoutTimeChange;
 
+	Vect2 absPos;
+	Vect2 direction;
+	CircleShape circle;
+	RectangleShape rect;
 	Vect2 mousePos;
 
 private:
 	Vect2 pos;
 	Vect2 size;
-	Vect2 direction;
 
 	Vect2 defaultSize;
 
 	MyColor color;
 
-	CircleShape circle;
-	RectangleShape rect;
 	CircleShape empty;
 	bool isCircle;
 	bool isEmpty;
@@ -57,6 +58,7 @@ public:
 	void setSubdivisionOrigin(Vect2 subdivision);
 
 	Vect2 getPos();
+	Vect2 getAbsPos();
 	Vect2 getSize();
 	Vect2 getDirection();
 
@@ -80,10 +82,11 @@ public:
 	virtual void collideEnter(GameObject* otherObj);
 	virtual void collideExit();
 
-private:
-	void createShape();
 
 	bool collisionAABBtoAABB(GameObject* otherObj);
 	bool collisionAABBtoCircle(GameObject* otherObj);
 	bool collisionCircletoCircle(GameObject* otherObj);
+
+private:
+	void createShape();
 };
