@@ -342,7 +342,7 @@ bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
 	{
 		offsetX = mid.x();
 		offsetY = mid.y() - offset.y() + ((this->size.y() / offsetY) * (int(min(offsetY -1, max(0, otherObj->getPos().y() / (this->size.y() / offsetY)) )) + .5f));
-		if (!isBeetwen(otherObj->getPos().x(), topLeft.x(), botRight.x()))
+		if (!isBeetwen(pointToTest.x(), topLeft.x(), botRight.x()))
 		{
 			dir = (Vect2(offsetX, offsetY) - otherObj->getPos()).normal() * (otherObj->getSize().x() / 2);
 			pointToTest = otherObj->getPos() + dir;
@@ -352,7 +352,7 @@ bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
 	{
 		offsetX = mid.x() - offset.x() + ((this->size.x() / offsetX) * (int(min(offsetX -1, max(0, otherObj->getPos().x() / (this->size.x() / offsetX)) )) + .5f));
 		offsetY = mid.y();
-		if (!isBeetwen(otherObj->getPos().y(), topLeft.y(), botRight.y()))
+		if (!isBeetwen(pointToTest.y(), topLeft.y(), botRight.y()))
 		{
 			dir = (Vect2(offsetX, offsetY) - otherObj->getPos()).normal() * (otherObj->getSize().x() / 2);
 			pointToTest = otherObj->getPos() + dir;
