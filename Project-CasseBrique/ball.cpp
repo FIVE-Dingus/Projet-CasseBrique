@@ -15,14 +15,26 @@ void Ball::update()
 		mousePressed++;
 		this->setDirection(mousePos - this->getPos());
 	}
-	this->move(1);
+	this->move(2);
 	this->rotateShape(this->getDirection());
 };
 
 
 void Ball::collideEnter(GameObject* otherObj){
 	Vect2 dir = getDirection();
-	dir.setY(dir.y() * -1);
-
-	this->setDirection(dir);
+	if (dir.y() < 0 && abs(dir.y()) > abs(dir.x())) {
+		dir.setY(dir.y() * -1);
+		this->setDirection(dir);
+	} else if (dir.y() > 0 && abs(dir.y()) > abs(dir.x())) {
+		dir.setY(dir.y() * -1);
+		this->setDirection(dir);
+	}
+	if (dir.x() < 0 && abs(dir.x()) > abs(dir.y())) {
+		dir.setY(dir.x() * -1);
+		this->setDirection(dir);
+	}
+	else if (dir.x() > 0 && abs(dir.x()) > abs(dir.y())) {
+		dir.setY(dir.x() * -1);
+		this->setDirection(dir);
+	}
 };
