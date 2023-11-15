@@ -60,7 +60,7 @@
     <ClCompile Include="maths.cpp">
       <Filter>Fichiers sources\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="rect.cpp">
+    <ClCompile Include="cannon.cpp">
       <Filter>Fichiers sources\GameObject\scripts</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,7 +80,7 @@
     <ClInclude Include="ball.h">
       <Filter>Fichiers d%27en-tête\GameObject\scripts</Filter>
     </ClInclude>
-    <ClInclude Include="rect.h">
+    <ClInclude Include="cannon.h">
       <Filter>Fichiers d%27en-tête\GameObject\scripts</Filter>
     </ClInclude>
     <ClInclude Include="maths.h">

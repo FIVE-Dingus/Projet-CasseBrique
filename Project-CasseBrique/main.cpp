@@ -2,7 +2,7 @@
 #include "main.h"
 #include "GameObject.h"
 #include "ball.h"
-#include "rect.h"
+#include "cannon.h"
 #include "vect.h"
 using namespace sf;
 
@@ -25,7 +25,7 @@ void Main::initGameObjects()
         }
     }
     this->newGameObjects(new Ball(Vect2(400, 700), 10, MyColor(0xffffff)));
-    this->newGameObjects(new MyRect(Vect2(400, 700), Vect2(60, 20), MyColor(0xff0ff0)));
+    this->newGameObjects(new Cannon(Vect2(400, 700), Vect2(60, 20), MyColor(0xff0ff0)));
     this->allGameObjects[101]->activeCollision();
     this->allGameObjects[101]->setSubdivisionOrigin({ 60, 2 });
     this->allGameObjects[101]->setOrigin({ 15, 1 });
