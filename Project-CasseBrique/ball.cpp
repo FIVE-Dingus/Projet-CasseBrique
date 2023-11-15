@@ -22,7 +22,7 @@ void Ball::update()
 
 void Ball::collideEnter(GameObject* otherObj){
 	Vect2 dir = getDirection();
-	dir.setX();
+	dir.setY(dir.y() * -1);
 
 	this->setDirection(dir);
 };
