@@ -22,7 +22,7 @@ void Main::initGameObjects()
     //this->allGameObjects[51]->setSubdivisionOrigin({ 60, 2 });
     //this->allGameObjects[51]->setOrigin({ 15, 1 });
 
-    this->newGameObjects(new GameObject(Vect2(500, 250), Vect2(500, 250), {0x00ff00, 100}));
+    this->newGameObjects(new GameObject(Vect2(500, 500), Vect2(500, 250), {0x00ff00, 100}));
 
 }
 

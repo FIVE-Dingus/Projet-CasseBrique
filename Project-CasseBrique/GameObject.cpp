@@ -338,10 +338,11 @@ bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
 
 	cout << offsetX << " : " << offsetY << endl;
 
-	if (offsetY - 1 != 0)
+	if (offsetX - 1 == 0)
 	{
+		cout << "this" << endl;
 		offsetX = mid.x();
-		offsetY = mid.y() - offset.y() + ((this->size.y() / offsetY) * (int(min(offsetY -1, max(0, otherObj->getPos().y() / (this->size.y() / offsetY)) )) + .5f));
+		offsetY = mid.y() - offset.y() + ((this->size.y() / offsetY) * (int(min(offsetY -1, max(0, (otherObj->getPos().y() - topLeft.y()) / (this->size.y() / offsetY)) )) + .5f));
 		if (!isBeetwen(pointToTest.x(), topLeft.x(), botRight.x()))
 		{
 			dir = (Vect2(offsetX, offsetY) - otherObj->getPos()).normal() * (otherObj->getSize().x() / 2);
@@ -350,7 +351,8 @@ bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
 	}
 	else
 	{
-		offsetX = mid.x() - offset.x() + ((this->size.x() / offsetX) * (int(min(offsetX -1, max(0, otherObj->getPos().x() / (this->size.x() / offsetX)) )) + .5f));
+		cout << "here" << endl;
+		offsetX = mid.x() - offset.x() + ((this->size.x() / offsetX) * (int(min(offsetX -1, max(0, (otherObj->getPos().x() - botRight.x()) / (this->size.x() / offsetX)) )) + .5f));
 		offsetY = mid.y();
 		if (!isBeetwen(pointToTest.y(), topLeft.y(), botRight.y()))
 		{
