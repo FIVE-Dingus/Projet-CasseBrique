@@ -17,4 +17,5 @@ public:
 	Ball(Vect2 pos, Vect2 size);
 	Ball(Vect2 pos, Vect2 size, MyColor col);
 	void update() override;
+	void collideEnter(GameObject* otherObj) override;
 };

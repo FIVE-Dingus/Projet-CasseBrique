@@ -140,6 +140,13 @@ Vect2 GameObject::getPos()
 	return this->pos;
 }
 
+Vect2 GameObject::getAbsPos()
+{
+	absPos = pos;
+	absPos.y() * -1;
+	return this->absPos;
+}
+
 Vect2 GameObject::getSize()
 {
 	return this->size;

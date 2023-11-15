@@ -17,7 +17,12 @@ void Ball::update()
 	}
 	this->move(1);
 	this->rotateShape(this->getDirection());
-	if (this->collisionAABBtoCircle() == true) {
-		this->setDirection(this->getPos());
-	}
-}
+};
+
+
+void Ball::collideEnter(GameObject* otherObj){
+	Vect2 dir = getDirection();
+	dir.setX();
+
+	this->setDirection(dir);
+};

@@ -10,6 +10,7 @@ public:
 	float deltaTime;
 	float deltaTimeWithoutTimeChange;
 
+	Vect2 absPos;
 	Vect2 direction;
 	CircleShape circle;
 	RectangleShape rect;
@@ -57,6 +58,7 @@ public:
 	void setSubdivisionOrigin(Vect2 subdivision);
 
 	Vect2 getPos();
+	Vect2 getAbsPos();
 	Vect2 getSize();
 	Vect2 getDirection();
 
