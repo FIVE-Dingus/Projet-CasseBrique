@@ -4,6 +4,7 @@
 #include "vect.h"
 #include "colors.h"
 #include <SFML/Graphics.hpp>
+#include "main.h"
 using namespace sf;
 
 class Ball : public GameObject
@@ -17,5 +18,5 @@ public:
 	Ball(Vect2 pos, Vect2 size);
 	Ball(Vect2 pos, Vect2 size, MyColor col);
 	void update() override;
-	void colliding(GameObject* otherObj) override;
+	void collideEnter(GameObject* otherObj) override;
 };

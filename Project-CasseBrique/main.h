@@ -13,10 +13,10 @@ private:
 
 public:
 	Main();
+	void newGameObjects(GameObject* obj);
 
 private:
 	void initGameObjects();
-	void newGameObjects(GameObject* obj);
 	void updateGameObject();
 	void start();
 	void checkCollides();
