@@ -158,6 +158,11 @@ Vect2 GameObject::getDirection()
 	return this->direction;
 }
 
+MyColor GameObject::getColor()
+{
+	return this->color;
+}
+
 void GameObject::createRect()
 {
 	this->isEmpty = false;
@@ -333,8 +338,8 @@ bool GameObject::collisionAABBtoCircle(GameObject* otherObj)
 		return true;
 	}
 
-	Vect2 offset(this->size.x() / subdivisionOrigin.x() * posOrigin.x(), this->size.y() / subdivisionOrigin.y() * posOrigin.y());
-	Vect2 mid(this->pos.x() - offset.x() + (this->size.x() / 2), this->pos.y() - offset.y() + (this->size.y() / 2));
+	Vect2 offset = this->getOffsetBySubdivision();
+	Vect2 mid = this->getMid();
 	Vect2 dir = (mid - otherObj->getPos()).normal() * (otherObj->getSize().x() / 2);
 	Vect2 pointToTest = otherObj->getPos() + dir;
 	Vect2 topLeft(mid.x() + this->size.x() - offset.x(), mid.y() - offset.y());
@@ -397,6 +402,17 @@ void GameObject::informeCollide(bool colide, GameObject* otherObj)
 		this->isCollideThisTurn = true;
 		this->colliding(otherObj);
 	}
+}
+
+Vect2 GameObject::getMid()
+{
+	Vect2 offset = this->getOffsetBySubdivision();
+	return Vect2(this->pos.x() - offset.x() + (this->size.x() / 2), this->pos.y() - offset.y() + (this->size.y() / 2));
+}
+
+Vect2 GameObject::getOffsetBySubdivision()
+{
+	return Vect2(this->size.x() / subdivisionOrigin.x() * posOrigin.x(), this->size.y() / subdivisionOrigin.y() * posOrigin.y());
 }
 
 void GameObject::update() {}

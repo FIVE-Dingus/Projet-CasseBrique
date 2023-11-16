@@ -16,12 +16,9 @@ void Main::initGameObjects()
     MyColor mix1;
     MyColor mix2;
     MyColor mix;
-    this->newGameObjects(new GameObject(Vect2(0,   0), Vect2(800, 800), { 0xffffff, 200 }));
-    this->newGameObjects(new GameObject(Vect2(0,   0), Vect2(800, 800), { 0xffffff, 200 }));
-    this->newGameObjects(new GameObject(Vect2(800, 0), Vect2(800, 800), { 0xffffff, 200 }));
-    this->allGameObjects[0]->setOrigin({ 2, 0 });
-    this->allGameObjects[1]->setOrigin({ 0, 2 });
-    this->allGameObjects[2]->setOrigin({ 0, 0 });
+    this->newGameObjects(new GameObject(Vect2(400, -400), Vect2(800, 800), { 0xffffff, 200 }));
+    this->newGameObjects(new GameObject(Vect2(-400, 400), Vect2(800, 800), { 0xffffff, 200 }));
+    this->newGameObjects(new GameObject(Vect2(1200, 400), Vect2(800, 800), { 0xffffff, 200 }));
     for (int i = 0; i < 10; i++) {
         col1.mixin(col2, &mix1, i / 9.f);
         col3.mixin(col4, &mix2, i / 9.f);
