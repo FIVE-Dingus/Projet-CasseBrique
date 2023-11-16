@@ -19,21 +19,23 @@ void Ball::update()
 	this->rotateShape(this->getDirection());
 };
 
+void Ball::colliding(GameObject* otherObj) {
+	Vect2 dir = this->getPos() - otherObj->getPos();
+	float angle = dir.getAngle();
 
-void Ball::collideEnter(GameObject* otherObj){
-	Vect2 dir = getDirection();
-	if (dir.y() < 0 && abs(dir.y()) > abs(dir.x())) {
-		dir.setY(dir.y() * -1);
-		this->setDirection(dir);
-	} else if (dir.y() > 0 && abs(dir.y()) > abs(dir.x())) {
+	Vect2 offset = this->getOffsetBySubdivision();
+	Vect2 mid = this->getMid();
+	Vect2 topLeft(mid.x() + this->getSize().x() - offset.x(), mid.y() - offset.y());
+	float miniAngle = (180 - (topLeft - mid).getAngle()) * 2;
+	float maxiAngle = 180 - miniAngle;
+	miniAngle /= 2;
+
+	if ((miniAngle <= angle && angle <= miniAngle + maxiAngle) || (-miniAngle >= angle && angle >= -(miniAngle + maxiAngle))) {
 		dir.setY(dir.y() * -1);
 		this->setDirection(dir);
 	}
-	if (dir.x() < 0 && abs(dir.x()) > abs(dir.y())) {
-		dir.setY(dir.x() * -1);
-		this->setDirection(dir);
-	}
-	else if (dir.x() > 0 && abs(dir.x()) > abs(dir.y())) {
+	else
+	{
 		dir.setY(dir.x() * -1);
 		this->setDirection(dir);
 	}

@@ -61,6 +61,7 @@ public:
 	Vect2 getAbsPos();
 	Vect2 getSize();
 	Vect2 getDirection();
+	MyColor getColor();
 
 	void createRect();
 	void createCircle();
@@ -77,16 +78,18 @@ public:
 	void update(float deltaTime, float deltaTimeWithoutTimeChange);
 	virtual void update();
 
+	Vect2 getMid();
+	Vect2 getOffsetBySubdivision();
+
 	void informeCollide(bool colide, GameObject* otherObj);
 	virtual void colliding(GameObject* otherObj);
 	virtual void collideEnter(GameObject* otherObj);
 	virtual void collideExit();
 
+private:
+	void createShape();
 
 	bool collisionAABBtoAABB(GameObject* otherObj);
 	bool collisionAABBtoCircle(GameObject* otherObj);
 	bool collisionCircletoCircle(GameObject* otherObj);
-
-private:
-	void createShape();
 };
