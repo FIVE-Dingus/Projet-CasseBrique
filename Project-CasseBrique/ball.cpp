@@ -9,12 +9,15 @@ Ball::Ball(Vect2 pos, int d, MyColor col) : GameObject(pos, d, col) {};
 Ball::Ball(Vect2 pos, Vect2 size) : GameObject(pos, size) {};
 Ball::Ball(Vect2 pos, Vect2 size, MyColor col) : GameObject(pos, size, col) {};
 
+
 void Ball::update()
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && mousePressed == 0)
 	{
 		mousePressed++;
-		this->setDirection(mousePos - this->getPos());
+		Vect2 dir = this->getPos() - mousePos;
+		dir.setX(dir.x() * -1);
+		this->setDirection( dir );
 	}
 	this->move(2);
 	this->rotateShape(this->getDirection());
