@@ -28,7 +28,7 @@ void Main::initGameObjects()
         for (int j = 0; j < 10; j++)
         {
             mix1.mixin(mix2, &mix, j / 9.f);
-            this->newGameObjects(new Brick(Vect2(75 * i + 65, 30 * j + 100), Vect2(60, 20), mix));
+            this->newGameObjects(new Brick(Vect2(75 * i + 65, 40 * j + 100), Vect2(60, 20), mix));
         }
     }
     this->newGameObjects(new Ball(Vect2(400, 700), 10, MyColor(0xffffff)));
